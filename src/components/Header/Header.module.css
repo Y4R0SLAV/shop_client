@@ -1,0 +1,27 @@
+.content {
+  text-align: center;
+}
+
+.contentHeader {
+  text-align: center;
+  display: flex;
+  justify-content: right;
+}
+
+.shopName {
+  margin: 10px 0;
+}
+
+.servicesBlock {
+  width: 42%;
+  display: block;
+}
+.services {
+  display: flex;
+  justify-content: right;
+}
+
+.serviceItem {
+  list-style-type: none;
+  padding: 15px 10px;
+}
