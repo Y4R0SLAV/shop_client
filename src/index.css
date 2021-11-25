@@ -1,0 +1,19 @@
+@media print {
+  .noprint { display: none; }
+  .print { display: block; }
+} 
+
+
+/*
+
+Проверка на то, что будет выводиться как печать, а что нет.
+
+.noprint {
+  border: 10px red solid;
+}
+
+.print {
+  border: 10px green solid;
+} 
+
+*/

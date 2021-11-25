@@ -1,0 +1,55 @@
+.content {
+  max-width: 624px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 600px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.buttons_item {
+  grid: 1 0 21%;
+  text-decoration: none;
+  padding: 5px 6%;
+}
+
+.buttons_item a {
+  text-decoration: none;
+}
+
+.active, .typeItem:hover, .saleButton:hover{
+  border-radius: 3%;
+  background-color: #f0f0f0;
+  transition: 0.25s;
+}
+
+.selectedTypeWrapper {
+  position: fixed;
+  max-width: 624px;
+  width: 100%;
+}
+
+.selectedType {
+  padding: 18px 0;
+  width: 100%;
+  border: 1px green solid;
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.typeItem {
+  grid: 1 0 21%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.typeItem a{
+  text-decoration: none;
+}

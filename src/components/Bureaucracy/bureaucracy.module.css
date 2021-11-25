@@ -1,0 +1,29 @@
+.navigation {
+  display: flex;
+  justify-content: space-around; 
+  margin: 20px 0 10px 0;
+  padding: 20px 0 10px 0;
+  border: 2px #efefef solid;
+  font-size: 17px;
+}
+
+.navigation p {
+  cursor:default;
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+.printButton {
+  border: 1px #ababab solid;
+  border-radius: 3px;
+  max-width: 144px;
+  text-align: center;
+  padding: 8px;
+}
+
+.printButton a {
+  text-decoration: none;
+}
+

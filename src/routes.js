@@ -1,15 +1,26 @@
 import Admin from "./pages/Admin"
-import Basket from "./pages/Basket"
+import Cart from "./pages/Cart"
 import Shop from "./pages/Shop"
-import Auth from "./pages/Auth"
+import Account from "./pages/Account"
 import Product from "./pages/Product"
+import Favourite from './pages/Favourite'
+import Search from "./pages/Search"
+import Sales from "./pages/Sales"
+import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
 
 export const ADMIN_ROUTE = '/admin'
-export const LOGIN_ROUTE = '/login'
-export const REGISTRATION_ROUTE = '/registration'
 export const SHOP_ROUTE = '/'
-export const BASKET_ROUTE = '/basket'
+export const CART_ROUTE = '/cart'
 export const PRODUCT_ROUTE = '/product'
+export const FAVOURITE_ROUTE = '/favourite'
+export const ACCOUNT_ROUTE = '/account'
+export const SEARCH_ROUTE = '/search'
+export const SALES_ROUTE = '/sales'
+
+export const BUREAUCRACY_ROUTE = '/pages'
+export const SHIPPING_PAYMENT = 'shipping-payment'
+export const PRIVACY_POLICY = 'privacy-policy'
+
 
 const routes = [
   // хз чтоо делать с админом
@@ -18,25 +29,37 @@ const routes = [
     Component: Admin
   },
   {
-    path: BASKET_ROUTE,
-    Component: Basket
+    path: SALES_ROUTE,
+    Component: Sales
+  },
+  {
+    path: FAVOURITE_ROUTE,
+    Component: Favourite
+  },
+  {
+    path: CART_ROUTE,
+    Component: Cart
   },
   {
     path: SHOP_ROUTE,
     Component: Shop
   },
   {
-    path: LOGIN_ROUTE,
-    Component: Auth
+    path: SEARCH_ROUTE,
+    Component: Search
   },
   {
-    path: REGISTRATION_ROUTE,
-    Component: Auth
+    path: ACCOUNT_ROUTE,
+    Component: Account
   },
   {
     path: PRODUCT_ROUTE + '/:id',
     Component: Product
   },
+  {
+    path: BUREAUCRACY_ROUTE + '/:currentPage',
+    Component: Bureaucracy
+  }
 ]
 
 export default routes
