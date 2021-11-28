@@ -17,7 +17,7 @@ const Header = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
         <nav className={s.servicesBlock}>
           <ul className={s.services}>
             <li className={s.serviceItem}> <a href="https://instagram.com/marys_username_"> Instagram </a> </li>
-            <li className={s.serviceItem}> <a href="https://vk.com/ykorablev"> VK </a>  </li>
+            <li className={s.serviceItem}> <a href="https://vk.com/lefrootovo"> VK </a>  </li>
           </ul>
         </nav>
       </div>

@@ -1,0 +1,46 @@
+.content {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.content h2 {
+  font-weight: 600;
+  padding: 25px 0;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+.description * {
+  text-align: left;
+  font-size: 16px;
+}
+
+.adressAndWorks {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  border: 1px #ababab solid;
+  border-radius: 3px;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #efefef;
+}
+
+.navigation a {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.contacs {
+  padding: 20px 0;
+}

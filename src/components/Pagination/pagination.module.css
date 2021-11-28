@@ -1,0 +1,50 @@
+.wrapper {
+  display: block;
+  margin: 30px auto 0 auto;
+  text-align: center;
+}
+
+.head {
+  opacity: 0.65;
+  padding: 10px
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.backButton {
+  grid-column: 1;
+}
+
+.pages {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.nextButton{
+  grid-column: 3;
+}
+
+.page {
+  padding: 0 12px;
+}
+
+.notCurrentPage {
+  cursor: pointer;
+  opacity: 0.65;
+}
+
+.notCurrentPage:hover {
+  color: #4498a3;
+  transition: 0.15s;
+}
+
+.currentPage {
+  cursor: default;
+  font-weight: 600;
+}

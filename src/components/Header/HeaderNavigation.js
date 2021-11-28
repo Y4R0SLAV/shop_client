@@ -8,32 +8,6 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
   // массивы с объекстами, содержащими названия коллекций, одежд и аксессуаров + ссылку на соответствующий товар
   const [isShown, setIsShown] = useState([false, false, false]) // отвечает за показ доп окна
 
-  // ПРОВЕРОЧНЫЕ ДАННЫЕ (НЕ ЗАБЫТЬ УДАЛИТЬ)
-  collectionsTypes = [
-    { name: "коллекция1", url: "collection1" },
-    { name: "коллекция2", url: "collection2" },
-    { name: "коллекция3", url: "collection3" },
-    { name: "коллекция4", url: "collection4" },
-    { name: "коллекция5", url: "collection5" },
-    { name: "коллекция6", url: "collection6" },
-  ]
-
-  clothesTypes = [
-    { name: "од12", url: "collection1" },
-    { name: "одежда2", url: "collection2" },
-    { name: "од3", url: "collection3" },
-    { name: "оде4", url: "collection4" },
-    { name: "5", url: "collection5" },
-    { name: "оджеа6", url: "collection6" },
-  ]
-
-  accessoriesTypes = [
-    { name: "акс1", url: "collection1" },
-    { name: "акс2", url: "collection2" },
-    { name: "акс6", url: "collection6" }
-  ]
-  // КОНЕЦ ПРОВЕРОЧНЫХ ДАННЫХ
-
   const getClassNames = (n) => (
     cn(s.buttons_item, {
       [s.active]: isShown[n]
@@ -60,23 +34,28 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
     <div className={s.content} onMouseLeave={() => mouseOnBlock([false, false, false])}>
       <div className={s.buttons}>
         {/* кнопка распродажи, единственная не выпадающая */}
-        <div className={s.buttons_item + " " + s.saleButton} onMouseEnter={() => mouseOnBlock([false, false, false])}>
-          <Link to="/sales"> СКИДКИ </Link>
-        </div>
+        <Link to="/sales"> <div className={s.buttons_item + " " + s.saleButton} onMouseEnter={() => mouseOnBlock([false, false, false])}>
+          СКИДКИ
+        </div> </Link>
         {/* кнопка Коллекций*/}
-        <div className={getClassNames(0)} onMouseEnter={() => mouseOnBlock([true, false, false])}>
-          <Link to="/collections"> Коллекции</Link>
-        </div>
+        <Link to="/collections"> <div className={getClassNames(0)} onMouseEnter={() => mouseOnBlock([true, false, false])}>
+          Коллекции
+        </div> </Link>
 
         {/* кнопка Одежды*/}
-        <div className={getClassNames(1)} onMouseEnter={() => mouseOnBlock([false, true, false])}>
-          <Link to="/clothes"> Одежда </Link>
-        </div>
+        <Link to="/clothes">
+          <div className={getClassNames(1)} onMouseEnter={() => mouseOnBlock([false, true, false])}>
+            Одежда
+          </div>
+        </Link>
+
 
         {/* кнопка Аксессуаров*/}
-        <div className={getClassNames(2)} onMouseEnter={() => mouseOnBlock([false, false, true])}>
-          <Link to="/accessories"> Аксессуары </Link>
-        </div>
+        <Link to="/accessories">
+          <div className={getClassNames(2)} onMouseEnter={() => mouseOnBlock([false, false, true])}>
+            Аксессуары
+          </div>
+        </Link>
       </div>
 
       {/* выпадающий список - один из этих трех*/}

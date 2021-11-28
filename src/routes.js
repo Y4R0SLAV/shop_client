@@ -1,11 +1,10 @@
 import Admin from "./pages/Admin"
 import Cart from "./pages/Cart"
-import Shop from "./pages/Shop"
 import Account from "./pages/Account"
+import ShopContainer from './pages/Shop/ShopContainer'
 import Product from "./pages/Product"
 import Favourite from './pages/Favourite'
 import Search from "./pages/Search"
-import Sales from "./pages/Sales"
 import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
 
 export const ADMIN_ROUTE = '/admin'
@@ -29,10 +28,6 @@ const routes = [
     Component: Admin
   },
   {
-    path: SALES_ROUTE,
-    Component: Sales
-  },
-  {
     path: FAVOURITE_ROUTE,
     Component: Favourite
   },
@@ -42,7 +37,7 @@ const routes = [
   },
   {
     path: SHOP_ROUTE,
-    Component: Shop
+    Component: ShopContainer
   },
   {
     path: SEARCH_ROUTE,

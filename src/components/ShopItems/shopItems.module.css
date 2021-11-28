@@ -1,0 +1,38 @@
+.shopItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shopItem {
+  margin: 12px;
+  text-align: center;
+}
+
+.shopItem a {
+  text-decoration: none;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+}
+
+.clickabled img {
+  width: 100%;
+  height: 100%;
+}
+
+.imageBlock{ 
+  position: relative;
+}
+
+.saleLabel {
+  position: absolute;
+  top: 3%;   
+  background: orange;
+  left: 65%;
+  text-align: center;
+  right: 0%;
+  color: white;
+  font-weight: 600;
+}
+

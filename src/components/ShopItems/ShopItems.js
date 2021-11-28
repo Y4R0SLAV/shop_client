@@ -1,0 +1,84 @@
+import React, { useState } from "react"
+import s from "./shopItems.module.css"
+
+
+const ShopItems = ({ shopItemsArray }) => {
+  // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale, isLimited
+  const [focusedItem, setFocusedItem] = useState(0)
+
+  shopItemsArray = [{
+    id: 1,
+    name: "Кот нарисованный",
+    isLimited: false,
+    price: 2000,
+    sale: 0,
+    photos: {
+      frontPhoto: "https://yt3.ggpht.com/a/AATXAJy1mVkeqtduFgK-V8Hqik_0_ftI1bnY3o2S1V7U=s900-c-k-c0xffffffff-no-rj-mo",
+      backPhoto: "https://yt3.ggpht.com/a/AATXAJzDZgdwiK36rYtltzugkrALYxAKaUfeQPTqoA=s900-c-k-c0xffffffff-no-rj-mo"
+    }
+  },
+  {
+    id: 2,
+    name: "СОБАКА  !!!",
+    isLimited: false,
+    price: 1111,
+    sale: 111,
+    photos: {
+      frontPhoto: "https://avatars.mds.yandex.net/i?id=2a0000017a176998dda850d4ddef538fcb2c-4949466-images-thumbs&n=13&exp=1",
+      backPhoto: "https://mediasole.ru/data/images/222/222186/Dog_hr_12.jpg"
+    }
+  },
+  {
+    id: 3,
+    name: "third item",
+    isLimited: false,
+    price: 12331,
+    sale: 412,
+    photos: {
+      frontPhoto: "https://yt3.ggpht.com/a/AATXAJy1mVkeqtduFgK-V8Hqik_0_ftI1bnY3o2S1V7U=s900-c-k-c0xffffffff-no-rj-mo",
+      backPhoto: "https://yt3.ggpht.com/a/AATXAJzDZgdwiK36rYtltzugkrALYxAKaUfeQPTqoA=s900-c-k-c0xffffffff-no-rj-mo"
+    }
+  },
+  {
+    id: 4,
+    name: "fourth item",
+    isLimited: true,
+    price: 2000,
+    sale: 0,
+    photos: {
+      frontPhoto: "https://yt3.ggpht.com/a/AATXAJy1mVkeqtduFgK-V8Hqik_0_ftI1bnY3o2S1V7U=s900-c-k-c0xffffffff-no-rj-mo",
+      backPhoto: "https://yt3.ggpht.com/a/AATXAJzDZgdwiK36rYtltzugkrALYxAKaUfeQPTqoA=s900-c-k-c0xffffffff-no-rj-mo"
+    }
+  }]
+
+  const getFinishedItem = (item) => {
+    let currentPhoto = item.photos.frontPhoto
+    if (focusedItem === item.id) {
+      currentPhoto = item.photos.backPhoto
+    }
+    return <div className={s.shopItem}
+      onMouseEnter={() => { setFocusedItem(item.id) }}
+      onMouseLeave={() => { setFocusedItem(0) }}>
+      <a href="#">
+        <div className={s.imageBlock}>
+          {item.sale > 0 && <div className={s.saleLabel}> РАСПРОДАЖА </div>}
+          <div className={s.clickabled}>
+            <img src={currentPhoto} /> <br />
+            <span className={s.itemName}> {item.name} </span>
+          </div>
+        </div>
+      </a>
+
+      {item.isLimited && <p> limited edition </p>}
+      {item.sale > 0 && <div> было <span className={s.oldPrice}> {item.price} </span> &#8381;.     Скидка {item.sale} &#8381;.</div>}
+      {+item.price - +item.sale} &#8381;
+    </div>
+  }
+
+  return <div className={s.shopItems}>
+    {shopItemsArray.map(item => getFinishedItem(item))}
+  </div>
+}
+
+
+export default ShopItems;

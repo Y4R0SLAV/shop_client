@@ -15,11 +15,10 @@
 
 .buttons_item {
   grid: 1 0 21%;
-  text-decoration: none;
   padding: 5px 6%;
 }
 
-.buttons_item a {
+.buttons a {
   text-decoration: none;
 }
 

@@ -1,17 +1,20 @@
 import React from 'react'
-import s from "./footerNavigation.module.css"
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import favouritesImg from '../../../assets/footerNavigationIcons/favourite.png'
-import searchImg from '../../../assets/footerNavigationIcons/search.png'
-import userImg from '../../../assets/footerNavigationIcons/user.png'
-import trackingImg from '../../../assets/footerNavigationIcons/evaluation.png'
-import backetImg from '../../../assets/footerNavigationIcons/bag.png'
+import s from "./bottomNavigation.module.css"
 
-import { CART_ROUTE, PRODUCT_ROUTE, FAVOURITE_ROUTE, ACCOUNT_ROUTE, SEARCH_ROUTE } from "../../../routes"
+import favouritesImg from '../../assets/footerNavigationIcons/favourite.png'
+import searchImg from '../../assets/footerNavigationIcons/search.png'
+import userImg from '../../assets/footerNavigationIcons/user.png'
+import trackingImg from '../../assets/footerNavigationIcons/evaluation.png'
+import backetImg from '../../assets/footerNavigationIcons/bag.png'
 
-const FooterNavigation = ({ favouritesCount, basketCount }) => {
+import { CART_ROUTE, PRODUCT_ROUTE, FAVOURITE_ROUTE, ACCOUNT_ROUTE, SEARCH_ROUTE } from "../../routes"
 
+const BottomNavigation = ({ favouritesCount, basketCount }) => {
+
+  favouritesCount = 5; basketCount = 27;
   const getNavItem = (link, img, text) => {
     return <div className={s.navItem}>
       <Link to={link}>
@@ -33,4 +36,10 @@ const FooterNavigation = ({ favouritesCount, basketCount }) => {
   )
 }
 
-export default FooterNavigation
+const mapStateToProps = (state) => ({
+  favouritesCount: state.favourites.itemsCount,
+  basketCount: state.basket.itemsCount
+})
+
+
+export default connect(mapStateToProps, {})(BottomNavigation)
