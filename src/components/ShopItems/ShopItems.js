@@ -10,7 +10,7 @@ const ShopItems = ({ shopItemsArray }) => {
     id: 1,
     name: "Кот нарисованный",
     isLimited: false,
-    price: 2000,
+    price: 500,
     sale: 0,
     photos: {
       frontPhoto: "https://yt3.ggpht.com/a/AATXAJy1mVkeqtduFgK-V8Hqik_0_ftI1bnY3o2S1V7U=s900-c-k-c0xffffffff-no-rj-mo",
@@ -30,13 +30,13 @@ const ShopItems = ({ shopItemsArray }) => {
   },
   {
     id: 3,
-    name: "third item",
+    name: "Курящие коты",
     isLimited: false,
-    price: 12331,
-    sale: 412,
+    price: 1000000,
+    sale: 1,
     photos: {
-      frontPhoto: "https://yt3.ggpht.com/a/AATXAJy1mVkeqtduFgK-V8Hqik_0_ftI1bnY3o2S1V7U=s900-c-k-c0xffffffff-no-rj-mo",
-      backPhoto: "https://yt3.ggpht.com/a/AATXAJzDZgdwiK36rYtltzugkrALYxAKaUfeQPTqoA=s900-c-k-c0xffffffff-no-rj-mo"
+      frontPhoto: "https://im0-tub-ru.yandex.net/i?id=690716d7f936b278e4044ca953e18686-sr&n=13&exp=1",
+      backPhoto: "https://im0-tub-ru.yandex.net/i?id=01b6f5c8d58466adc04a70c9a262bb3d-sr&n=13&exp=1"
     }
   },
   {

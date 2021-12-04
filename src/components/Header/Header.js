@@ -11,7 +11,7 @@ const Header = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
       <div className={s.contentHeader}>
         <div> {/* просто пустой блок чтобы сервисы и название норм встали по центру и в конец */} </div>
         <div>
-          <h3 className={s.shopName}> <Link to="/"> Название магазина </Link> </h3>
+          <h3 className={s.shopName}> <Link to="/"> OVSYANKIN BOUTIQUE </Link> </h3>
         </div>
 
         <nav className={s.servicesBlock}>

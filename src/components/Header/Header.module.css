@@ -13,6 +13,10 @@
   margin: 10px 0;
 } 
 
+.shopName a {
+  text-decoration: none;
+}
+
 .services {
   display: flex;
   justify-content: right;
