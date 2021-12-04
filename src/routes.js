@@ -44,6 +44,10 @@ const routes = [
     Component: Search
   },
   {
+    path: SALES_ROUTE,
+    Component: ShopContainer
+  },
+  {
     path: ACCOUNT_ROUTE,
     Component: Account
   },

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import s from "./shopItems.module.css"
 
 
-const ShopItems = ({ shopItemsArray }) => {
+const ShopItems = ({ shopItemsArray, isSale }) => {
   // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale, isLimited
   const [focusedItem, setFocusedItem] = useState(0)
 
@@ -76,7 +76,9 @@ const ShopItems = ({ shopItemsArray }) => {
   }
 
   return <div className={s.shopItems}>
-    {shopItemsArray.map(item => getFinishedItem(item))}
+    {isSale ? shopItemsArray.filter(item => item.sale > 0).map(item => getFinishedItem(item))
+      : shopItemsArray.map(item => getFinishedItem(item))}
+
   </div>
 }
 

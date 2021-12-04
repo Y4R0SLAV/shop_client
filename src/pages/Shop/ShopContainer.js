@@ -4,17 +4,10 @@ import Shop from './Shop'
 import { setCurrentPage } from './../../redux/reducers/shopReducer'
 
 
-const ShopContainer = ({ items, currentPage, pageSize, totalItemsCount, setCurrentPage }) => {
+const ShopContainer = ({ items, currentPage, pageSize, totalItemsCount, setCurrentPage, isSale = false }) => {
   const [itemsArray, setItemsArray] = useState(items ? items : [])
 
-  // componentDidMount() {
-  //   this.props.getUsers(this.props.currentPage, this.props.pageSize);
-  // }
-
-  // onPageChanged = (pageNumber) => {
-  //   this.props.getUsers(pageNumber, this.props.pageSize);
-  //   this.props.setCurrentPage(pageNumber);
-  // }
+  // тут должны быть приколы с сервером но ничего нет и скорее всего не будет
 
   return <>
     {/* {this.props.isFetching ? <Preloader /> : null} */}
@@ -22,7 +15,8 @@ const ShopContainer = ({ items, currentPage, pageSize, totalItemsCount, setCurre
       currentPageNumber={currentPage}
       itemsPerPage={pageSize}
       setCurrentPage={setCurrentPage}
-      shopItemsArray={itemsArray} />
+      shopItemsArray={itemsArray}
+      isSale={isSale} />
   </>
 }
 

@@ -10,8 +10,13 @@ const AppRouter = () => {
       <Routes>
         <Route path="*" element={<PageNotFound />} />
 
-        {routes.map(({ path, Component }) =>
-          <Route key={path} path={path} element={< Component />} />
+        {routes.map(({ path, Component }) => {
+          if (path === '/sales') {
+            return <Route key={path} path={path} element={< Component isSale={true} />} />
+          } else {
+            return <Route key={path} path={path} element={< Component />} />
+          }
+        }
         )}
       </Routes>
     </div>
