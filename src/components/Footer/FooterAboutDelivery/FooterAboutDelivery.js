@@ -56,11 +56,11 @@ const Contacts = () => {
         <a className={s.phone} href="tel:+79607137757">
           <img src="#" /> <span className={s.number}> +7 (960) 713-77-57 </span>
         </a>
-        <a className={s.mail} href="mailto:jeros1337@gmail.com">
-          <img src="#" /> <span className={s.email}> jeros1337@gmail.com </span>
+        <a className={s.mail} href="mailto:yakorablevrr@gmail.com">
+          <img src="#" /> <span className={s.email}> yakorablevrr@gmail.com </span>
         </a>
-        <a className={s.vk} href="https://vk.com/lefrootovo" target="_blank">
-          <img src="#" /> <span className={s.id}> vk.com/lefrutovo </span>
+        <a className={s.vk} href="https://vk.com/yakorablev" target="_blank">
+          <img src="#" /> <span className={s.id}> vk.com/yakorablev </span>
         </a>
       </div>
       <br />
@@ -68,10 +68,10 @@ const Contacts = () => {
       <h5> Подпишитесь на нас </h5>
       <br />
       <div className={s.navigation}>
-        <a className={s.instagram} href="https://instagram.com/marys_username_">
+        <a className={s.instagram} href="https://instagram.com/y4r0cl4v">
           <img src="#" /> <span className={s.number}> INSTAGRAM </span>
         </a>
-        <a className={s.mail} href="https://vk.com/lefrootovo">
+        <a className={s.mail} href="https://vk.com/yakorablev">
           <img src="#" /> <span className={s.email}> VKONTAKTE </span>
         </a>
         <a className={s.vk} href="https://youtube.com/danik_korablev00" target="_blank">
