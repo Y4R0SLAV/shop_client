@@ -1,11 +1,11 @@
 const db = require('../db')
 
 class CollectionController {
-  async createCollection(req, res) {
+  async createCollection(req, res, next) {
     const { title, picture, header } = req.body
     const newCollection = await db.query('INSERT INTO collection (title, picture, header) VALUES ($1, $2, $3) RETURNING *', [title, picture, header])
 
-    res.json(newCollection.rows[0])
+    res.json({ "collectionId": newCollection.rows[0].collection_id })
   }
 
   async getCollections(req, res) {
