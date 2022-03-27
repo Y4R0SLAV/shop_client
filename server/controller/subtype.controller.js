@@ -17,6 +17,12 @@ class SubtypeController {
     res.json(subtypes.rows)
   }
 
+  async getAllSubtypes(req, res) {
+    const subtypes = await db.query('SELECT * FROM subtype')
+
+    res.json(subtypes.rows)
+  }
+
   async deleteSubtype(req, res) {
     const id = req.params.id
     const subtype = await db.query('DELETE FROM subtype WHERE subtype_id = $1', [id])

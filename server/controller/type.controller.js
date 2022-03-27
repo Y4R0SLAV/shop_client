@@ -8,6 +8,12 @@ class TypeController {
     res.json(type.rows[0])
   }
 
+  async getAllTypes(req, res) {
+    const types = await db.query('SELECT * FROM type')
+
+    res.json(types.rows)
+  }
+
   async deleteType(req, res) {
     const id = req.params.id
     const type = await db.query('DELETE FROM type WHERE type_id = $1', [id])
