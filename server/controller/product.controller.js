@@ -24,15 +24,11 @@ class ProductController {
     let { subtype_id, collection_id, have_sale, term, sorted } = req.query
 
     let sorted_by = sortedByString(sorted)
-    console.log(sorted_by)
     let whereArray = []
     let sale = -1
 
     if (have_sale) { sale = 0 }
-
-    if (subtype_id) { whereArray.push(`fk_subtype_id = ${+subtype_id}`) }
-    if (collection_id) { whereArray.push(`fk_collection_id = collection_id`) }
-    if (term) { whereArray.push(`title LIKE '%${term}%'`) }
+    term = '%' + term + '%'
 
     let products
     // всё вроде работает но ещё один фильтр невозможно будет вставить
@@ -127,8 +123,9 @@ class ProductController {
           }
         } else {
           if (term) {
+            console.log(111111111)
             products = await db.query(
-              'SELECT * FROM product WHERE title LIKE %$1% AND sale_price > $2',
+              'SELECT * FROM product WHERE title LIKE $1 AND sale_price > $2',
               [term, sale])
           }
           else {
