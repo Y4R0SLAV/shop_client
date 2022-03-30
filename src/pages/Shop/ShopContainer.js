@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { connect } from "react-redux"
 import Shop from './Shop'
-import { setCurrentPage } from './../../redux/reducers/shopReducer'
 
 
-const ShopContainer = ({ items, currentPage, pageSize, totalItemsCount, setCurrentPage, isSale = false }) => {
+const ShopContainer = ({ items, isSale = false }) => {
   const [itemsArray, setItemsArray] = useState(items ? items : [])
 
   // тут должны быть приколы с сервером но ничего нет и скорее всего не будет
@@ -12,9 +11,6 @@ const ShopContainer = ({ items, currentPage, pageSize, totalItemsCount, setCurre
   return <>
     {/* {this.props.isFetching ? <Preloader /> : null} */}
     <Shop totalItemsCount={totalItemsCount}
-      currentPageNumber={currentPage}
-      itemsPerPage={pageSize}
-      setCurrentPage={setCurrentPage}
       shopItemsArray={itemsArray}
       isSale={isSale} />
   </>
