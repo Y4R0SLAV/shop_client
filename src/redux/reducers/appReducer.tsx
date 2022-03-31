@@ -36,6 +36,9 @@ export const initializeApp = () => {
     // let promise = await dispatch(me())
     // здесь сначала в промисы кину то, чего мне следует дождаться
     // а потом задиспатчу сетИнициалайз
+
+    // дождаться мне надо получения продуктов, коллекций и одежды с аксессуарами
+
     // Promise.all([promise]).then(() => { dispatch(setInitialize()) })
   }
 }

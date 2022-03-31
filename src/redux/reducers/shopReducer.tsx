@@ -79,8 +79,14 @@ export const setAccessories = (accessories: Array<AccessoriesType>): setAccessor
 type DispatchType = Dispatch<ActionsType>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
-// надо будет добавить параметры, по коллекции, по виду одежды, аксессуаров и по слову
-export const requestProducts = (sybtypeId, collectionId, haveSale = false, term = "", sorted = "") => async (dispatch) => {
+export const requestProducts = (sybtypeId: number,
+                                collectionId: number,
+                                haveSale = false, 
+                                term = "", 
+                                sorted = "") => async (dispatch: any) => {
+  // ПОМЕНЯТЬ ЭНИ НА ТИП ДИСПАТЧА
+
+  
   // dispatch(toggleIsFetching(true));
 
   // let data = await shopApi.getItems(currentPage, pageSize)
