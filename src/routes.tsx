@@ -1,7 +1,6 @@
 import Admin from "./pages/Admin"
 import Cart from "./pages/Cart"
-import Account from "./pages/Account"
-import ShopContainer from './pages/Shop/ShopContainer'
+import Shop from './pages/Shop/Shop'
 import Product from "./pages/Product"
 import Favourite from './pages/Favourite'
 import Search from "./pages/Search"
@@ -12,7 +11,6 @@ export const SHOP_ROUTE = '/'
 export const CART_ROUTE = '/cart'
 export const PRODUCT_ROUTE = '/product'
 export const FAVOURITE_ROUTE = '/favourite'
-export const ACCOUNT_ROUTE = '/account'
 export const SEARCH_ROUTE = '/search'
 export const SALES_ROUTE = '/sales'
 
@@ -37,7 +35,7 @@ const routes = [
   },
   {
     path: SHOP_ROUTE,
-    Component: ShopContainer
+    Component: Shop
   },
   {
     path: SEARCH_ROUTE,
@@ -45,11 +43,7 @@ const routes = [
   },
   {
     path: SALES_ROUTE,
-    Component: ShopContainer
-  },
-  {
-    path: ACCOUNT_ROUTE,
-    Component: Account
+    Component: Shop
   },
   {
     path: PRODUCT_ROUTE + '/:id',
