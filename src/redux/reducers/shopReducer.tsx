@@ -1,6 +1,7 @@
 import { Dispatch } from "react"
 import { AppStateType } from "../store"
 import { ThunkAction } from "redux-thunk"
+import { getProducts } from './../../api/api';
 
 const SET_ITEMS = "shop/SET_ITEMS"
 const SET_COLLECTIONS = "shop/SET_COLLECTIONS"
@@ -79,21 +80,26 @@ export const setAccessories = (accessories: Array<AccessoriesType>): setAccessor
 type DispatchType = Dispatch<ActionsType>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
-export const requestProducts = (sybtypeId: number,
-                                collectionId: number,
+export const requestProducts = (sybtypeId: number | null,
+                                collectionId: number | null,
                                 haveSale = false, 
                                 term = "", 
-                                sorted = "") => async (dispatch: any) => {
+                                sorted = "") => (
+  async (dispatch: any) => {
   // ПОМЕНЯТЬ ЭНИ НА ТИП ДИСПАТЧА
-
-  
   // dispatch(toggleIsFetching(true));
 
-  // let data = await shopApi.getItems(currentPage, pageSize)
-  // dispatch(toggleIsFetching(false));
-  // dispatch(setItems(data.items));
-}
+  let data = await getProducts(sybtypeId, collectionId, haveSale, term, sorted)
+  console.log(1111111111111111111111111111111111111)
+  console.log(data)
+  alert('hoi')
+  //dispatch(setItems(data))
+  
+  // я хуй знает что туда приходит
 
+  // dispatch(toggleIsFetching(false));
+  }
+)
 /*
 export const requestCollections = (): ThunkType => async (dispatch) => {
   // // dispatch(toggleIsFetching(true))

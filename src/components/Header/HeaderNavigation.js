@@ -3,9 +3,9 @@ import s from "./Navigation.module.css"
 import { Link } from 'react-router-dom'
 import cn from 'classnames'
 
-const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
-  // collectionsTypes, clothesTypes, accessoriesTypes -
-  // массивы с объекстами, содержащими названия коллекций, одежд и аксессуаров + ссылку на соответствующий товар
+const Navigation = ({ collections, clothes, accessories }) => {
+  // collections, clothes, accessories -
+  // массивы с объектами, содержащими названия коллекций, одежд и аксессуаров + ссылку на соответствующий товар
   const [isShown, setIsShown] = useState([false, false, false]) // отвечает за показ доп окна
 
   const getClassNames = (n) => (
@@ -17,8 +17,8 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
     setIsShown([collection, clothes, accessories])
   }
 
-  const showSomeType = (types) => {
-    return types.map(type => {
+  const showSomeType = (items) => {
+    return items.map(type => {
       return (
         <div className={s.typeItem} key={type.name}>
           <Link to={type.url}>
@@ -28,7 +28,6 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
       )
     })
   }
-
 
   return (
     <div className={s.content} onMouseLeave={() => mouseOnBlock([false, false, false])}>
@@ -63,7 +62,7 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
         isShown[0] &&
         <div className={s.selectedTypeWrapper}>
           <div className={s.selectedType}>
-            {showSomeType(collectionsTypes)}
+            {showSomeType(collections)}
           </div>
         </div>
       }
@@ -72,7 +71,7 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
         isShown[1] &&
         <div className={s.selectedTypeWrapper}>
           <div className={s.selectedType} >
-            {showSomeType(clothesTypes)}
+            {showSomeType(clothes)}
           </div>
         </div>
       }
@@ -81,7 +80,7 @@ const Navigation = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
         isShown[2] &&
         <div className={s.selectedTypeWrapper}>
           <div className={s.selectedType}>
-            {showSomeType(accessoriesTypes)}
+            {showSomeType(accessories)}
           </div>
         </div>
       }
