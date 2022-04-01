@@ -1,34 +1,55 @@
 import { Dispatch } from "react"
 import { AppStateType } from "../store"
 import { ThunkAction } from "redux-thunk"
-import { getProducts } from './../../api/api';
+import { getProducts, getCollections, getClothes, getAccessories } from './../../api/api';
 
 const SET_ITEMS = "shop/SET_ITEMS"
 const SET_COLLECTIONS = "shop/SET_COLLECTIONS"
 const SET_CLOTHES = "shop/SET_CLOTHES"
 const SET_ACCESORIES = "shop/SET_ACCESORIES"
 
-type CollectionType = {
-  name: string,
-  url: string,
+export type ProductType = {
+    description: "asassasasasaassa",
+    fk_collection_id: 4,
+    fk_subtype_id: 3,
+    price: 4530,
+    product_id: 11,
+    sale_price: 100,
+    sizing: true,
+    title: "3st prod",
+    xxs: number | null,
+    xs: number | null,
+    s: number | null,
+    m: number | null,
+    l: number | null,
+    xl: number | null,
+    xxl: number | null,
+}
+
+export type CollectionType = {
+  title: string,
+  id: number,
   picture: string,
+  url: string,
   header: string,
 }
 
-type ClothesType = {
-  name: string,
+export type ClothesType = {
+  id: number,
+  title: string,
   url: string,
   picture: string,
 }
 
-type AccessoriesType = {
-  name: string,
+export type AccessoriesType = {
+  title: string,
+  id: number,
   url: string,
   picture: string,
 }
 
 let initialState = {
-  items: [],
+  items: [] as Array<ProductType>,
   collections: [] as Array<CollectionType>,
   clothes: [] as Array<ClothesType>,
   accessories: [] as Array<AccessoriesType>,
@@ -80,55 +101,45 @@ export const setAccessories = (accessories: Array<AccessoriesType>): setAccessor
 type DispatchType = Dispatch<ActionsType>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsType>
 
-export const requestProducts = (sybtypeId: number | null,
-                                collectionId: number | null,
+export const requestProducts = (sybtypeId = 0,
+                                collectionId = 0,
                                 haveSale = false, 
                                 term = "", 
                                 sorted = "") => (
-  async (dispatch: any) => {
-  // ПОМЕНЯТЬ ЭНИ НА ТИП ДИСПАТЧА
+  async (dispatch: DispatchType) => {
   // dispatch(toggleIsFetching(true));
-
-  let data = await getProducts(sybtypeId, collectionId, haveSale, term, sorted)
-  console.log(1111111111111111111111111111111111111)
+  let data: Array<ProductType> = await getProducts(sybtypeId, collectionId, haveSale, term, sorted)
   console.log(data)
-  alert('hoi')
-  //dispatch(setItems(data))
-  
-  // я хуй знает что туда приходит
-
+  dispatch(setItems(data))
   // dispatch(toggleIsFetching(false));
   }
 )
-/*
+
 export const requestCollections = (): ThunkType => async (dispatch) => {
   // // dispatch(toggleIsFetching(true))
 
-  let data = await apiGetCollections()
-  // // dispatch(toggleIsFetching(false))
-  dispatch(setCollections(data.items))
+  let data: Array<CollectionType> = await getCollections()
+  // // dispatch(toggleIsFetching(false)
+  dispatch(setCollections(data))
 }
-*/
 
-/*
+
 export const requestClothes = (): ThunkType => async (dispatch) => {
   // // dispatch(toggleIsFetching(true))
 
-  let data = await apiGetClothes()
+  let data: Array<ClothesType> = await getClothes()
   // // dispatch(toggleIsFetching(false))
-  dispatch(setClothes(data.items))
+  dispatch(setClothes(data))
 }
-*/
 
-/*
 export const requestAccessories = (): ThunkType => async (dispatch) => {
   // // dispatch(toggleIsFetching(true))
 
-  let data = await apiGetAccessories()
+  let data: Array<AccessoriesType> = await getAccessories()
   // // dispatch(toggleIsFetching(false))
-  dispatch(setAccessories(data.items))
+  dispatch(setAccessories(data))
 }
-*/
+
 
 
 
