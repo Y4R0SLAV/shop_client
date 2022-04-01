@@ -11,7 +11,7 @@ import { selectProducts } from "../../redux/selectors/productSelector"
 import {
   requestProducts, requestAccessories,
   requestClothes, requestCollections
-} from './../../redux/reducers/shopReducer'
+} from '../../redux/reducers/shopReducer'
 
 const Shop = () => {
   // isSale буду брать из url (в роутс написано)
@@ -35,7 +35,7 @@ const Shop = () => {
         : <img className={s.headerImg} src={headerImg} alt="Ovsyankin Boutique" />
       }
 
-      <ShopItems shopItemsArray={shopItemsArray} />
+      <ShopItems shopItemsArray={shopItemsArray}/>
       <BottomNavigation />
 
     </div>

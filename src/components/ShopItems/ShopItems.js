@@ -2,14 +2,13 @@ import React, { useState } from "react"
 import s from "./shopItems.module.css"
 
 
-const ShopItems = ({ shopItemsArray, isSale }) => {
-  // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale, isLimited
+const ShopItems = ({ shopItemsArray }) => {
+  // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale
   const [focusedItem, setFocusedItem] = useState(0)
 
   shopItemsArray = [{
     id: 1,
     name: "Кот нарисованный",
-    isLimited: false,
     price: 500,
     sale: 0,
     photos: {
@@ -20,7 +19,6 @@ const ShopItems = ({ shopItemsArray, isSale }) => {
   {
     id: 2,
     name: "СОБАКА  !!!",
-    isLimited: false,
     price: 1111,
     sale: 111,
     photos: {
@@ -31,7 +29,6 @@ const ShopItems = ({ shopItemsArray, isSale }) => {
   {
     id: 3,
     name: "Курящие коты",
-    isLimited: false,
     price: 1000000,
     sale: 1,
     photos: {
@@ -42,7 +39,6 @@ const ShopItems = ({ shopItemsArray, isSale }) => {
   {
     id: 4,
     name: "fourth item",
-    isLimited: true,
     price: 2000,
     sale: 0,
     photos: {
@@ -53,13 +49,17 @@ const ShopItems = ({ shopItemsArray, isSale }) => {
 
   const getFinishedItem = (item) => {
     let currentPhoto = item.photos.frontPhoto
+
     if (focusedItem === item.id) {
       currentPhoto = item.photos.backPhoto
     }
+
     return <div className={s.shopItem}
+
       onMouseEnter={() => { setFocusedItem(item.id) }}
       onMouseLeave={() => { setFocusedItem(0) }}>
-      <a href="#">
+
+      <a href={"product/" + item.id}>
         <div className={s.imageBlock}>
           {item.sale > 0 && <div className={s.saleLabel}> РАСПРОДАЖА </div>}
           <div className={s.clickabled}>
@@ -69,16 +69,13 @@ const ShopItems = ({ shopItemsArray, isSale }) => {
         </div>
       </a>
 
-      {item.isLimited && <p> limited edition </p>}
       {item.sale > 0 && <div> было <span className={s.oldPrice}> {item.price} </span> &#8381;.     Скидка {item.sale} &#8381;.</div>}
       {+item.price - +item.sale} &#8381;
     </div>
   }
 
   return <div className={s.shopItems}>
-    {isSale ? shopItemsArray.filter(item => item.sale > 0).map(item => getFinishedItem(item))
-      : shopItemsArray.map(item => getFinishedItem(item))}
-
+    {shopItemsArray.map(item => getFinishedItem(item))}
   </div>
 }
 
