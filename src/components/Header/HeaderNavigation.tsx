@@ -3,26 +3,35 @@ import s from "./Navigation.module.css"
 import { Link } from 'react-router-dom'
 import cn from 'classnames'
 
-const Navigation = ({ collections, clothes, accessories }) => {
-  // collections, clothes, accessories -
-  // массивы с объектами, содержащими названия коллекций, одежд и аксессуаров + ссылку на соответствующий товар
+import { useSelector } from 'react-redux'
+import { selectCollections } from './../../redux/selectors/collectionSelector'
+import { selectClothes } from '../../redux/selectors/clothesSelector'
+import { selectAccessories } from './../../redux/selectors/accessoriesSelector'
+
+import { CollectionType, ClothesType, AccessoriesType } from '../../redux/reducers/shopReducer'
+
+const Navigation = () => {
+  const collections = useSelector(selectCollections)
+  const clothes = useSelector(selectClothes)
+  const accessories = useSelector(selectAccessories)
+  
   const [isShown, setIsShown] = useState([false, false, false]) // отвечает за показ доп окна
 
-  const getClassNames = (n) => (
+  const getClassNames = (n: number) => (
     cn(s.buttons_item, {
       [s.active]: isShown[n]
     }))
 
-  const mouseOnBlock = ([collection, clothes, accessories]) => {
+  const mouseOnBlock = ([collection, clothes, accessories] : [boolean, boolean, boolean]) => {
     setIsShown([collection, clothes, accessories])
   }
 
-  const showSomeType = (items) => {
+  const showSomeType = (items : Array<CollectionType | AccessoriesType | ClothesType>) => {
     return items.map(type => {
       return (
-        <div className={s.typeItem} key={type.name}>
+        <div className={s.typeItem} key={type.id}>
           <Link to={type.url}>
-            {type.name}
+            {type.title}
           </Link>
         </div>
       )

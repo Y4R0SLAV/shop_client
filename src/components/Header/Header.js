@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import "../../index.css"
 
 
-const Header = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
+const Header = () => {
   return (
-    <div className={s.content + " " + "noprint"}>
+    <div className={s.content + " noprint"}>
       <div className={s.contentHeader}>
         <div> {/* просто пустой блок чтобы сервисы и название норм встали по центру и в конец */} </div>
         <div>
@@ -22,7 +22,7 @@ const Header = ({ collectionsTypes, clothesTypes, accessoriesTypes }) => {
         </nav>
       </div>
 
-      <Navigation collectionsTypes={collectionsTypes} clothesTypes={clothesTypes} accessoriesTypes={accessoriesTypes} />
+      <Navigation />
     </div>
   )
 }

@@ -2,12 +2,12 @@ import React from "react"
 import { BrowserRouter } from "react-router-dom"
 import AppRouter from "./components/AppRouter"
 import Footer from "./components/Footer/Footer"
-import HeaderContainer from "./components/Header/HeaderContainer"
+import Header from "./components/Header/Header"
 
 const App = () => {
   return (
     <BrowserRouter>
-      <HeaderContainer />
+      <Header />
       <AppRouter />
       <Footer />
     </BrowserRouter>
