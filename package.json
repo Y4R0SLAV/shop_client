@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-dom": "^17.0.14"
+    "@types/react-dom": "^17.0.14",
+    "redux-devtools-extension": "^2.13.9"
   }
 }
