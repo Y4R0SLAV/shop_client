@@ -4,26 +4,36 @@ import { ThunkAction } from "redux-thunk"
 import { getProducts, getCollections, getClothes, getAccessories } from './../../api/api';
 
 const SET_ITEMS = "shop/SET_ITEMS"
+const SET_SELECTED_ITEM = "shop/SET_SELECTED_ITEM"
 const SET_COLLECTIONS = "shop/SET_COLLECTIONS"
 const SET_CLOTHES = "shop/SET_CLOTHES"
 const SET_ACCESORIES = "shop/SET_ACCESORIES"
 
 export type ProductType = {
-    description: "asassasasasaassa",
-    fk_collection_id: 4,
-    fk_subtype_id: 3,
-    price: 4530,
-    product_id: 11,
-    sale_price: 100,
-    sizing: true,
-    title: "3st prod",
-    xxs: number | null,
-    xs: number | null,
-    s: number | null,
-    m: number | null,
-    l: number | null,
-    xl: number | null,
-    xxl: number | null,
+  "id": number,
+  "title": string,
+  "price": number,
+  "sale": number,
+  "front": string,
+  "back": string
+}
+
+export type SelectedProductType = {
+  description: string,
+  fk_collection_id: number,
+  fk_subtype_id: number,
+  price: number,
+  product_id: number,
+  sale_price: number,
+  sizing: boolean,
+  title: string,
+  xxs: number | null,
+  xs: number | null,
+  s: number | null,
+  m: number | null,
+  l: number | null,
+  xl: number | null,
+  xxl: number | null,
 }
 
 export type CollectionType = {
@@ -49,6 +59,7 @@ export type AccessoriesType = {
 }
 
 let initialState = {
+  selectedItem: {} as SelectedProductType, 
   items: [] as Array<ProductType>,
   collections: [] as Array<CollectionType>,
   clothes: [] as Array<ClothesType>,
@@ -61,6 +72,10 @@ const shopReducer = (state = initialState, action: ActionsType): InitialStateTyp
   switch (action.type) {
     case SET_ITEMS:
       return { ...state, items: action.items }
+
+    case SET_SELECTED_ITEM: {
+      return {...state, selectedItem: action.item}
+    }
 
     case SET_COLLECTIONS:
       return { ...state, collections: action.collections }
@@ -77,10 +92,17 @@ const shopReducer = (state = initialState, action: ActionsType): InitialStateTyp
 }
 
 type ActionsType = setItemsActionType | setCollectionsActionType |
-                    setClothesActionType |   setAccessoriesActionType
+                    setClothesActionType |   setAccessoriesActionType | setSelectedItemType
 
-type setItemsActionType = {type: typeof SET_ITEMS, items: any}
-export const setItems = (items: any): setItemsActionType => ({ type: SET_ITEMS, items })
+
+type setSelectedItemType = {type: typeof SET_SELECTED_ITEM, item: SelectedProductType}
+export const setSelectedItem = (item: SelectedProductType): setSelectedItemType => (
+  { type: SET_SELECTED_ITEM, item }
+)
+
+
+type setItemsActionType = {type: typeof SET_ITEMS, items: Array<ProductType>}
+export const setItems = (items: Array<ProductType>): setItemsActionType => ({ type: SET_ITEMS, items })
 
 type setCollectionsActionType = {type: typeof SET_COLLECTIONS, collections: Array<CollectionType>}
 export const setCollections = (collections: Array<CollectionType>): setCollectionsActionType => (
