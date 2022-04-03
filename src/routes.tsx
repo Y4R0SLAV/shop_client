@@ -14,7 +14,7 @@ export const FAVOURITE_ROUTE = '/favourite'
 export const SEARCH_ROUTE = '/search'
 export const SALES_ROUTE = '/sales'
 
-export const BUREAUCRACY_ROUTE = '/pages'
+export const BUREAUCRACY_ROUTE = 'pages/'
 export const SHIPPING_PAYMENT = 'shipping-payment'
 export const PRIVACY_POLICY = 'privacy-policy'
 
@@ -50,7 +50,7 @@ const routes = [
     Component: Product
   },
   {
-    path: BUREAUCRACY_ROUTE + '/:currentPage',
+    path: BUREAUCRACY_ROUTE + ':currentPage',
     Component: Bureaucracy
   }
 ]
