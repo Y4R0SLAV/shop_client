@@ -24,6 +24,11 @@ export const getProducts = (subtype_id = 0,
   ).then(response => response.data)
 }
 
+export const getProduct = (id: number) => {
+  return instance.get<any>(`product/` + id).then(response => response.data)
+}
+
+
 export const getCollections = () => {
   return instance.get<any>(`collection`).then(response => response.data)
 }

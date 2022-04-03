@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { ProductType } from "../../redux/reducers/shopReducer"
 import s from "./shopItems.module.css"
-
+import { Link } from 'react-router-dom'
 
 const ShopItems: React.FC<{shopItemsArray: Array<ProductType>}> = ({ shopItemsArray }) => {
   // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale
@@ -16,7 +16,7 @@ const ShopItems: React.FC<{shopItemsArray: Array<ProductType>}> = ({ shopItemsAr
       onMouseEnter={() => { setFocusedItem(item.id) }}
       onMouseLeave={() => { setFocusedItem(0) }}>
 
-      <a href={"product/" + item.id}>
+      <Link to={"product/" + item.id}>
         <div className={s.imageBlock}>
           {item.sale > 0 && <div className={s.saleLabel}> РАСПРОДАЖА </div>}
           <div className={s.clickabled}>
@@ -24,7 +24,7 @@ const ShopItems: React.FC<{shopItemsArray: Array<ProductType>}> = ({ shopItemsAr
             <span className={s.itemName}> {item.title} </span>
           </div>
         </div>
-      </a>
+      </Link>
 
       {item.sale > 0 && <div> было <span className={s.oldPrice}> {item.price} </span> &#8381;.     Скидка {item.sale} &#8381;.</div>}
       {+item.price - +item.sale} &#8381;

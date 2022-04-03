@@ -1,7 +1,7 @@
 import { Dispatch } from "react"
 import { AppStateType } from "../store"
 import { ThunkAction } from "redux-thunk"
-import { getProducts, getCollections, getClothes, getAccessories } from './../../api/api';
+import { getProducts, getProduct, getCollections, getClothes, getAccessories } from './../../api/api';
 
 const SET_ITEMS = "shop/SET_ITEMS"
 const SET_SELECTED_ITEM = "shop/SET_SELECTED_ITEM"
@@ -34,6 +34,9 @@ export type SelectedProductType = {
   l: number | null,
   xl: number | null,
   xxl: number | null,
+  front: string,
+  back: string, 
+  photos: Array<string>
 }
 
 export type CollectionType = {
@@ -73,9 +76,8 @@ const shopReducer = (state = initialState, action: ActionsType): InitialStateTyp
     case SET_ITEMS:
       return { ...state, items: action.items }
 
-    case SET_SELECTED_ITEM: {
+    case SET_SELECTED_ITEM: 
       return {...state, selectedItem: action.item}
-    }
 
     case SET_COLLECTIONS:
       return { ...state, collections: action.collections }
@@ -133,6 +135,16 @@ export const requestProducts = (sybtypeId = 0,
   let data: Array<ProductType> = await getProducts(sybtypeId, collectionId, haveSale, term, sorted)
   console.log(data)
   dispatch(setItems(data))
+  // dispatch(toggleIsFetching(false));
+  }
+)
+
+export const requestProduct = (id: number) => (
+  async (dispatch: DispatchType) => {
+  // dispatch(toggleIsFetching(true));
+  let data: SelectedProductType = await getProduct(id)
+
+  dispatch(setSelectedItem(data))
   // dispatch(toggleIsFetching(false));
   }
 )
