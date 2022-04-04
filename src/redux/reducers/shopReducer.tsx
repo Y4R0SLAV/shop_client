@@ -20,8 +20,11 @@ export type ProductType = {
 
 export type SelectedProductType = {
   description: string,
-  fk_collection_id: number,
-  fk_subtype_id: number,
+  collection_id: number | null,
+  subtype_id: number,
+  subtype_title: string,
+  type_id: number,
+  type_title: string,
   price: number,
   product_id: number,
   sale_price: number,
@@ -29,7 +32,7 @@ export type SelectedProductType = {
   title: string,
   xxs: number | null,
   xs: number | null,
-  s: number | null,
+  s: number,
   m: number | null,
   l: number | null,
   xl: number | null,
