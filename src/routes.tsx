@@ -1,7 +1,7 @@
 import Admin from "./pages/Admin"
 import Cart from "./pages/Cart"
 import Shop from './pages/Shop/Shop'
-import Product from "./pages/Product"
+import Product from "./pages/Product/Product"
 import Favourite from './pages/Favourite'
 import Search from "./pages/Search"
 import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
@@ -14,7 +14,10 @@ export const FAVOURITE_ROUTE = '/favourite'
 export const SEARCH_ROUTE = '/search'
 export const SALES_ROUTE = '/sales'
 
-export const BUREAUCRACY_ROUTE = 'pages/'
+export const CLOTHES_ROUTE = '/clothes'
+export const ACCESSORIES_ROUTE = '/accessories'
+
+export const BUREAUCRACY_ROUTE = '/pages/'
 export const SHIPPING_PAYMENT = 'shipping-payment'
 export const PRIVACY_POLICY = 'privacy-policy'
 
