@@ -23,13 +23,13 @@ const Bureaucracy = () => {
       <div className={s.navigation + " " + "noprint"}>
         <div className={s.links}>
           {currentPage !== PRIVACY_POLICY
-            ? <Link to={BUREAUCRACY_ROUTE + "/" + PRIVACY_POLICY}>  {privacePolicyTitle} </Link>
+            ? <Link to={BUREAUCRACY_ROUTE + PRIVACY_POLICY}>  {privacePolicyTitle} </Link>
             : <p>  {privacePolicyTitle} </p>}
         </div>
 
         <div>
           {currentPage !== SHIPPING_PAYMENT
-            ? <Link to={BUREAUCRACY_ROUTE + "/" + SHIPPING_PAYMENT}>  {shippingPaymentTitle} </Link>
+            ? <Link to={BUREAUCRACY_ROUTE + SHIPPING_PAYMENT}>  {shippingPaymentTitle} </Link>
             : <p>  {shippingPaymentTitle} </p>}
         </div>
       </div>
