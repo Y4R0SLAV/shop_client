@@ -9,8 +9,8 @@ const FooterInfo = () => {
     <div className={footerS.wrapper}>
       <div className={footerS.content}>
         <div className={footerS.links}>
-          <Link replace={true} to={BUREAUCRACY_ROUTE + PRIVACY_POLICY}> Согласие на обработку персональных данных / Consent to the Processing of Personal Data</Link> <br />
-          <Link replace={true} to={BUREAUCRACY_ROUTE + SHIPPING_PAYMENT} > Условия доставки и оплаты / Delivery and Payment </Link>
+          <Link to={BUREAUCRACY_ROUTE + PRIVACY_POLICY}> Согласие на обработку персональных данных / Consent to the Processing of Personal Data</Link> <br />
+          <Link to={BUREAUCRACY_ROUTE + SHIPPING_PAYMENT} > Условия доставки и оплаты / Delivery and Payment </Link>
         </div>
         <span className={footerS.shopName}> &copy; Магазинчек </span>
         <div className={footerS.platform}>
