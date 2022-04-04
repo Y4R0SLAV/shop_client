@@ -3,7 +3,7 @@ import s from "./Header.module.css"
 import Navigation from './HeaderNavigation'
 import { Link } from 'react-router-dom'
 import "../../index.css"
-import { instagamURL, vkURL } from './../../assets/links'
+import { instagamURL, vkURL } from '../../assets/linksAndConstants'
 
 
 const Header = () => {
