@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import style from "./productInfo.module.css"
+import style from "../productInfo.module.css"
 
 const numToPrice = (price: number) => {
   return `${price > 1000 ? Math.floor(price / 1000) + " " + price % 1000 : price } ₽`

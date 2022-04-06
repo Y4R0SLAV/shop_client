@@ -1,32 +1,12 @@
-import React, {FC} from "react"
+import React, {FC, useState} from "react"
 
 import style from "./productInfo.module.css"
-import { Crumbs } from './Crumbs'
-import { Price } from './Price'
+import { Crumbs } from './ProductComponents/Crumbs'
+import { Price } from './ProductComponents/Price'
+import { Sizing } from './SizingAndCart/Sizing'
+import { SizingAndCartButton } from './SizingAndCart/SizingAndCartButton';
 
-type SizingProps = {  
-  xxs: number | null, 
-  xs: number | null, 
-  s: number | null, 
-  m: number | null, 
-  l: number | null, 
-  xl: number | null, 
-  xxl: number | null }
 
-const Sizing: FC<SizingProps> = ({xxs, xs, s, m, l, xl, xxl}) => {
-  return <div>
-    Размер
-    <div className={style.sizes}>
-      {xxs && <div className={style.size}> XXS </div>}
-      {xs && <div className={style.size}> XS </div>}
-      {s && <div className={style.size}> S </div>}
-      {m && <div className={style.size}> M </div>}
-      {l && <div className={style.size}> L </div>}
-      {xl && <div className={style.size}> XL </div>}
-      {xxl && <div className={style.size}> XXL </div>}
-    </div>
-  </div>
-}
 
 type ProductInfoProps = {
   title: string, 
@@ -54,11 +34,19 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   return <div className="">
     <h3 className={style.title}> {title} </h3>
 
-    <Crumbs sale_price={sale_price} type_id={type_id} type_title={type_title} subtype_id={subtype_id} subtype_title={subtype_title}/>
-
+    <Crumbs sale_price={sale_price} type_id={type_id} type_title={type_title} subtype_id={subtype_id}   
+            subtype_title={subtype_title} product_title={title}/>
     <Price price={price} sale_price={sale_price}/>
-    {sizing && <Sizing xxs={xxs} xs={xs} s={s} m={m} l={l} xl={xl} xxl={xxl}/>}
+
+    <SizingAndCartButton 
+      xxs={xxs} xs={xs} s={s} m={m} l={l} 
+      xl={xl} xxl={xxl} sizing={sizing}
+    />
+
+
     ProductInfo ProductInfo 
+
+
 
   </div>
 }
