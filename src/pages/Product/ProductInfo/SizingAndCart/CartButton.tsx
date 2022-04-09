@@ -32,16 +32,16 @@ const incrementItemCountHandle = (id: number, size: sizeType, setObj: any) => {
 export type CartButtonProps = {
   selectedSize: sizeType,
   setIsHidden: (x: boolean) => void,
-  isHidden: boolean
+  isHidden: boolean,
+  countOfCurrentSize: number
 }
 
-export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden}) => {
+export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden, countOfCurrentSize}) => {
   const currentItem = useSelector(selectProductToCart)
   const [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id))
 
 
-  if (selectedSize && sizeObject[selectedSize] !== undefined) {
-
+  if (selectedSize && sizeObject[selectedSize] !== undefined && countOfCurrentSize >= (sizeObject[selectedSize] as number)) {
     return <div className={style.cartButtonBlock}>
         <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
         
@@ -49,18 +49,21 @@ export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHi
           Добавить ещё
         </div>
 
-        <Link to={CART_ROUTE}> <div className={style.cartButton}> Корзина </div>  </Link>
+        <Link to={CART_ROUTE}> <div className={style.cartButton + " " + style.toCartButton}> Корзина </div>  </Link>
       </div>
-
+  } else if (selectedSize && sizeObject[selectedSize] !== undefined) {
+      return  <div className={style.cartButtonBlock}>
+                <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
+                <Link to={CART_ROUTE}> <div className={style.cartButton + " " + style.toCartButton}> Корзина </div>  </Link>
+              </div>
+        
   } else {
-
     return <div className={style.cartButtonBlock}>
     <div className={style.cartButton} onClick={() => addToCartHandle(selectedSize, setIsHidden, currentItem, setSizeObject)}>
       В корзину
     </div>
 
-    { 
-    isHidden  ?  <div className={style.hiddenText}>
+    { isHidden  ?  <div className={style.hiddenText}>
                     Пожалуйста, выберите размер
                   </div>
                 :  <div className={style.hiddenText + " " + style.active}>

@@ -37,6 +37,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
 
     <Crumbs sale_price={sale_price} type_id={type_id} type_title={type_title} subtype_id={subtype_id}   
             subtype_title={subtype_title} product_title={title}/>
+            
     <Price price={price} sale_price={sale_price}/>
 
     <SizingAndCartButton 
