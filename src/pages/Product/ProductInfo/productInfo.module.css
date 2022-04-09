@@ -62,9 +62,11 @@
   box-shadow: none;
 }
 
-
+.cartButtonBlock {
+  
+}
 .cartButton {
-  background-color: black;
+  background-color: rgb(36, 36, 36);
   color: white;
   width: 300px;
   height: 50px;
@@ -75,10 +77,15 @@
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
+  margin: 15px 0;
+  transition: all 0.2s;
+}
+
+a {
+  text-decoration: none; 
 }
 
 .cartButton:hover {
-  transition: all 0.2s;
   background-color: #fe9800;
   color: black;
 }
@@ -89,10 +96,16 @@
   font-weight: 600;
   margin: 10px 0;
   transform: scale(0);
-  transition: all 0.03s;
 }
 
 .hiddenText.active {
   transform: scale(1);
 }
 
+
+.countInCart {
+  color: rgb(36, 36, 36);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+}

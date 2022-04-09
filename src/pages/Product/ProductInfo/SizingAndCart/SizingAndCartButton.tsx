@@ -16,5 +16,6 @@ export const SizingAndCartButton: FC<SizingProps> = (
             xl={xl} xxl={xxl} sizing={sizing} selectedSize={selectedSize} setSelectedSize={setSelectedSize} setIsHidden={setIsHidden}/>
 
     <CartButton selectedSize={selectedSize} isHidden={isHidden} setIsHidden={setIsHidden} />
+    
   </div>
 }

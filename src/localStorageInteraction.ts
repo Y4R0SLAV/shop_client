@@ -1,3 +1,4 @@
+import Item from 'antd/lib/list/Item'
 import { stringify } from 'querystring'
 import { currentItemType } from './pages/Product/ProductInfo/SizingAndCart/CartButton'
 
@@ -16,40 +17,71 @@ export const getItemsFromCart = () => {
 
 export const getSizingAndCountsById = (productId: number) => {
   const allItemsInCart: Array<cartItemType> = JSON.parse(localStorage.getItem('cart') as string) || [] 
-  const resultArray = [] as Array<{size: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | null, count: number}>
+
+  const resultObject = {} as {
+    size?: number | null,
+    'xxs'?: number,
+    'xs'?: number,
+    's'?: number,
+    'm'?: number,
+    'l'?: number,
+    'xl'?: number,
+    'xxl'?: number
+  }
 
   allItemsInCart
     .filter(item => item.id === productId)
-    .forEach(item => resultArray.push({"size": item.size, "count": item.count}))
+    .forEach(item => {
+        if(item.size !== null) {
+          resultObject[item.size] = item.count 
+        } else {
+          resultObject.size = item.count
+        }
+      }
+    )
 
-  console.log(resultArray)
-  return resultArray
+  console.log(resultObject)
+  return resultObject
 }
 
 export const addItemToCart = ( obj: {
   size: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | null,
   title: string, price: number, url: string, id: number
   }, count = 1) => {
-
   const itemsInCart: Array<cartItemType> = getItemsFromCart()
-
-  /*
-  const newItem = { title: obj.title, 
-                    count, 
-                    price: obj.price, 
-                    url: obj.url, 
-                    size: obj.size, 
-                    id: obj.id } as cartItemType
-  */
 
   localStorage.setItem('cart', JSON.stringify([...itemsInCart, {...obj, count} as cartItemType]))
 }
 
+export const incrementItemCount = (productId: number, size: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | null) => {
+  const allItemsInCart: Array<cartItemType> = JSON.parse(localStorage.getItem('cart') as string) || [] 
+  const newItems = allItemsInCart.map(item => {
+    if (item.id === productId && item.size === size) {
+      return {...item, count: item.count + 1}
+    }
+    return item
+  })
+
+  localStorage.setItem('cart', JSON.stringify(newItems))
+}
 
 
 export const deleteItemFromCart = () => {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const getItemsFromFavourite = () => {
   return localStorage.getItem('favourite')

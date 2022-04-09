@@ -3,8 +3,9 @@ import React, {FC, useState} from "react"
 import style from "./productInfo.module.css"
 import { Crumbs } from './ProductComponents/Crumbs'
 import { Price } from './ProductComponents/Price'
-import { Sizing } from './SizingAndCart/Sizing'
-import { SizingAndCartButton } from './SizingAndCart/SizingAndCartButton';
+import { SizingAndCartButton } from './SizingAndCart/SizingAndCartButton'
+import { AddToFavourite } from './AddToFavourite'
+import { InfoBlock } from './InfoBlock'
 
 
 
@@ -43,9 +44,8 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       xl={xl} xxl={xxl} sizing={sizing}
     />
 
-
-    ProductInfo ProductInfo 
-
+    <InfoBlock />
+    <AddToFavourite />
 
 
   </div>

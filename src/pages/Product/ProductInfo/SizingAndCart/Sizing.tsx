@@ -49,7 +49,5 @@ export const Sizing: FC<SizingProps & SizingPropsPlus> = (
         }
 
       </div>
-
-  
   </div>
 }

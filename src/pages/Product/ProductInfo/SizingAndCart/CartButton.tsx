@@ -1,52 +1,77 @@
 import React, { FC, useState } from 'react'
 import style from '../productInfo.module.css'
-import { useSelector } from 'react-redux';
-import { selectProductToCart } from './../../../../redux/selectors/productSelector';
-import { addItemToCart, getSizingAndCountsById } from './../../../../localStorageInteraction';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux'
+import { selectProductToCart } from './../../../../redux/selectors/productSelector'
+import { addItemToCart, getSizingAndCountsById, incrementItemCount } from './../../../../localStorageInteraction'
+import { CART_ROUTE } from '../../../../routes'
+import { Link } from 'react-router-dom'
 
-export type CartButtonProps = {
-  selectedSize: null | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl',
-  setIsHidden: (x: boolean) => void,
-  isHidden: boolean
-}
+
+export type sizeType = null | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 
 export type currentItemType = {
   title: string, price: number, url: string, id: number
 }
 
-const cartButtonHandle = (selectedSize: null | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl',
+const addToCartHandle = (selectedSize: sizeType,
                           setIsHidden: (x: boolean) => void,
-                          currentItem: currentItemType) => {
-  if (selectedSize === null) {
-    setIsHidden(false)
-  }
-  else {
-    addItemToCart({...currentItem, size: selectedSize})
-  }
+                          currentItem: currentItemType,
+                          setObj: any) => {
+  selectedSize === null ? setIsHidden(false) : addItemToCart({...currentItem, size: selectedSize})
+  setObj(getSizingAndCountsById(currentItem.id))
   return undefined
+}
+
+const incrementItemCountHandle = (id: number, size: sizeType, setObj: any) => {
+  incrementItemCount(id, size)
+  setObj(getSizingAndCountsById(id))
 }
 
 
 
+export type CartButtonProps = {
+  selectedSize: sizeType,
+  setIsHidden: (x: boolean) => void,
+  isHidden: boolean
+}
+
 export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden}) => {
   const currentItem = useSelector(selectProductToCart)
-  const [sizeArray, setSizeArray] = getSizingAndCountsById(currentItem.id)
-    
+  const [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id))
 
-  return <div className="">
-    <div className={style.cartButton} onClick={() => cartButtonHandle(selectedSize, setIsHidden, currentItem)}>
+
+  if (selectedSize && sizeObject[selectedSize] !== undefined) {
+
+    return <div className={style.cartButtonBlock}>
+        <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
+        
+        <div className={style.cartButton} onClick={() => incrementItemCountHandle(currentItem.id, selectedSize, setSizeObject)}>
+          Добавить ещё
+        </div>
+
+        <Link to={CART_ROUTE}> <div className={style.cartButton}> Корзина </div>  </Link>
+      </div>
+
+  } else {
+
+    return <div className={style.cartButtonBlock}>
+    <div className={style.cartButton} onClick={() => addToCartHandle(selectedSize, setIsHidden, currentItem, setSizeObject)}>
       В корзину
     </div>
 
-    { isHidden  ?  <div className={style.hiddenText}>
+    { 
+    isHidden  ?  <div className={style.hiddenText}>
                     Пожалуйста, выберите размер
                   </div>
                 :  <div className={style.hiddenText + " " + style.active}>
                     Пожалуйста, выберите размер
                   </div>
     }
-
   </div>
+  }
+
+
+
+
 
 }
