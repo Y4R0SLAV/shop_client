@@ -11,6 +11,7 @@ export type cartItemType = {
   id: number
 }
 
+
 export const getItemsFromCart = () => {
   return JSON.parse(localStorage.getItem('cart') as string) || []
 }
@@ -29,6 +30,9 @@ export const getSizingAndCountsById = (productId: number) => {
     'xxl'?: number
   }
 
+  console.log(11111)
+  console.log(allItemsInCart)
+  console.log(productId)
   allItemsInCart
     .filter(item => item.id === productId)
     .forEach(item => {
@@ -41,6 +45,7 @@ export const getSizingAndCountsById = (productId: number) => {
     )
 
   console.log(resultObject)
+  console.log(11111)
   return resultObject
 }
 
@@ -71,27 +76,17 @@ export const deleteItemFromCart = () => {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 export const getItemsFromFavourite = () => {
-  return localStorage.getItem('favourite')
+  return JSON.parse(localStorage.getItem('fav') as string) as Array<number>
 }
 
-export const addItemToFavourite = () => {
-
-}
-
-
-export const deleteItemFromFavourite = () => {
+export const addItemToFavourite = (id: number) => {
+  const items = getItemsFromFavourite() || []
   
+  localStorage.setItem('fav', JSON.stringify([...items, id]))
+}
+
+export const deleteItemFromFavourite = (id: number) => {
+  const items = getItemsFromFavourite()
+  localStorage.setItem('fav', JSON.stringify(items.filter(item => item !== id)))
 }

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import style from '../productInfo.module.css'
 import { useSelector } from 'react-redux'
 import { selectProductToCart } from './../../../../redux/selectors/productSelector'
@@ -38,14 +38,16 @@ export type CartButtonProps = {
 
 export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden, countOfCurrentSize}) => {
   const currentItem = useSelector(selectProductToCart)
-  const [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id))
+  let [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id)) || {}
 
+  useEffect(() => { setSizeObject(getSizingAndCountsById(currentItem.id)) }, [currentItem])
 
-  if (selectedSize && sizeObject[selectedSize] !== undefined && countOfCurrentSize >= (sizeObject[selectedSize] as number)) {
+  if (selectedSize && countOfCurrentSize >= (sizeObject[selectedSize] as number) ) {
+
     return <div className={style.cartButtonBlock}>
         <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
         
-        <div className={style.cartButton} onClick={() => incrementItemCountHandle(currentItem.id, selectedSize, setSizeObject)}>
+        <div className={style.cartButton} onClick={() => {incrementItemCountHandle(currentItem.id, selectedSize, setSizeObject)}}>
           Добавить ещё
         </div>
 

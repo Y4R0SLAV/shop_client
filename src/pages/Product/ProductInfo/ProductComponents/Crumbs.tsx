@@ -2,6 +2,8 @@ import React, {FC} from "react"
 import { Breadcrumb } from 'antd'
 import { Link } from "react-router-dom"
 
+import style from "./crumbs.module.css"
+
 import { accessoriesid, clothesId } from '../../../../assets/linksAndConstants'
 import { CLOTHES_ROUTE } from "../../../../routes"
 import { ACCESSORIES_ROUTE } from '../../../../routes'
@@ -29,7 +31,7 @@ type CrumbsProps = {
 }
 
 export const Crumbs: FC<CrumbsProps>  = ({product_title, type_id, type_title, subtype_id, subtype_title, sale_price}) => {
-  return <Breadcrumb separator="">
+  return <Breadcrumb className={style.breadcrumb} separator="">
     <Breadcrumb.Item> <Link to="/" > Магазин </Link> </Breadcrumb.Item>
     <Breadcrumb.Separator>/</Breadcrumb.Separator>
     {

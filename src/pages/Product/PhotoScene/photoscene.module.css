@@ -1,0 +1,12 @@
+.bigImg {
+  width: 720px;
+  height: 720px;
+  padding: 7px
+  
+}
+
+.smallImgs img {
+  width: 360px;
+  height: 360px;
+  padding: 6px;
+}

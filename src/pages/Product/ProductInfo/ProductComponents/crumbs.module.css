@@ -1,0 +1,12 @@
+.breadcrumb {
+  color: #837f7d;
+  pointer-events: none;
+}
+.breadcrumb a {
+  color: #837f7d;
+  pointer-events: all;
+}
+.breadcrumb a:hover {
+  color: #145485;
+  transition: 0.2s all;
+}

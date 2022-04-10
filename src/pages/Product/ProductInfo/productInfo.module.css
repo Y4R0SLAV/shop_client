@@ -1,9 +1,12 @@
 .title {
-  color: red;
+  color: #333;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 .price {
   font-size: 28px;
+  margin: 25px 0;
 }
 
 .oldPrice {
@@ -26,6 +29,8 @@
   align-items: center;
   width: 55px;
   height: 28px;
+  
+  margin: 8px 0 4px 0;
 }
 
 .sizeSpan {
@@ -212,8 +217,16 @@ a {
   border: 1px solid #bbb;
 }
 
+.favLink {
+  width: 70%;
+}
+
 .heart {
   margin-top: 2px;
   margin-right: 6px;
   color: #666;
+}
+
+.filledHeart {
+  color: #fd8282;
 }

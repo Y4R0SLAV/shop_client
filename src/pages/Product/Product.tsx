@@ -19,6 +19,7 @@ const Product = () => {
   }, []);
 
   const p: SelectedProductType = useSelector(selectProduct)
+
   return (
     <div> 
       <div className={s.main}>
@@ -26,7 +27,7 @@ const Product = () => {
 
         <ProductInfo title={p.title} type_id={p.type_id} type_title={p.type_title}
           subtype_id={p.subtype_id} subtype_title={p.subtype_title} price={p.price} 
-          description={p.description}sale_price = {p.sale_price} sizing={p.sizing} 
+          description={p.description} sale_price = {p.sale_price} sizing={p.sizing} 
           xxs={p.xxs} xs={p.xs} s={p.s} m={p.m} l={p.l} xl={p.xl} xxl={p.xxl}
         />
       </div>

@@ -8,10 +8,7 @@ import ShopItems from '../../components/ShopItems/ShopItems'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProducts } from "../../redux/selectors/productSelector"
 
-import {
-  requestProducts, requestAccessories,
-  requestClothes, requestCollections
-} from '../../redux/reducers/shopReducer'
+import { requestProducts } from '../../redux/reducers/shopReducer'
 
 const Shop = () => {
   // isSale буду брать из url (в роутс написано)
@@ -21,9 +18,6 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(requestAccessories())
-    dispatch(requestCollections())
-    dispatch(requestClothes())
     dispatch(requestProducts())
   }, []);
 

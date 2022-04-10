@@ -25,7 +25,7 @@ type ProductInfoProps = {
   m: number | null,
   l: number | null,
   xl: number | null,
-  xxl: number | null,
+  xxl: number | null
 }
 
 export const ProductInfo: React.FC<ProductInfoProps> = ({
@@ -47,7 +47,5 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
 
     <InfoBlock />
     <AddToFavourite />
-
-
   </div>
 }

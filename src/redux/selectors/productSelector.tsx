@@ -14,7 +14,11 @@ export const selectProductToCart = (state: AppStateType) => {
   const title = s.title
   const url = s.front
   const price = s.price - s.sale_price
-  const id = s.product_id
+  const id = s.id
 
   return {title, url, price, id}
+}
+
+export const selectCurrentProductId = (state: AppStateType) => {
+ return state.shop.selectedItem.id
 }

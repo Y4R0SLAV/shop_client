@@ -26,7 +26,7 @@ export type SelectedProductType = {
   type_id: number,
   type_title: string,
   price: number,
-  product_id: number,
+  id: number,
   sale_price: number,
   sizing: boolean,
   title: string,
