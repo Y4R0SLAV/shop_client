@@ -20,5 +20,9 @@ export const selectProductToCart = (state: AppStateType) => {
 }
 
 export const selectCurrentProductId = (state: AppStateType) => {
- return state.shop.selectedItem.id
+  return state.shop.selectedItem.id
+}
+
+export const selectRecItems = (state: AppStateType) => {
+  return state.shop.recItems
 }

@@ -30,9 +30,6 @@ export const getSizingAndCountsById = (productId: number) => {
     'xxl'?: number
   }
 
-  console.log(11111)
-  console.log(allItemsInCart)
-  console.log(productId)
   allItemsInCart
     .filter(item => item.id === productId)
     .forEach(item => {
@@ -44,8 +41,6 @@ export const getSizingAndCountsById = (productId: number) => {
       }
     )
 
-  console.log(resultObject)
-  console.log(11111)
   return resultObject
 }
 

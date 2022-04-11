@@ -36,12 +36,17 @@ export const Crumbs: FC<CrumbsProps>  = ({product_title, type_id, type_title, su
     <Breadcrumb.Separator>/</Breadcrumb.Separator>
     {
       sale_price 
-        ? <Breadcrumb.Item> <Link to="/sale" > Скидки </Link> </Breadcrumb.Item>
+        ? 
+          <div style={{display: "inline-block", marginLeft: "6px"}}>
+            <Breadcrumb.Item> <Link to="/sale" > Скидки </Link> </Breadcrumb.Item>
+          </div>
+            
         : <span className="">
             { getLinksFromTypeIdAndSubtypeId(type_id, type_title, '') }
             { getLinksFromTypeIdAndSubtypeId(type_id, subtype_title, subtype_id) }
           </span> 
     }
+    
     <Breadcrumb.Item> <span> {product_title} </span> </Breadcrumb.Item>
   </Breadcrumb> 
 }

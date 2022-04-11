@@ -1,3 +1,13 @@
+.productInfoScene {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #7f7f7f white; 
+}
+
 .title {
   color: #333;
   font-weight: 600;

@@ -1,10 +1,11 @@
 import { Dispatch } from "react"
 import { AppStateType } from "../store"
 import { ThunkAction } from "redux-thunk"
-import { getProducts, getProduct, getCollections, getClothes, getAccessories } from './../../api/api';
+import { getProducts, getProduct, getCollections, getClothes, getAccessories, getRecProducts } from './../../api/api';
 
 const SET_ITEMS = "shop/SET_ITEMS"
 const SET_SELECTED_ITEM = "shop/SET_SELECTED_ITEM"
+const SET_REC_ITEMS = "shop/SET_REC_ITEMS"
 const SET_COLLECTIONS = "shop/SET_COLLECTIONS"
 const SET_CLOTHES = "shop/SET_CLOTHES"
 const SET_ACCESORIES = "shop/SET_ACCESORIES"
@@ -16,6 +17,14 @@ export type ProductType = {
   "sale": number,
   "front": string,
   "back": string
+}
+
+export type RecItemType = {
+  id: number,
+  price: number,
+  title: string, 
+  sale_price: number,
+  url: string
 }
 
 export type SelectedProductType = {
@@ -65,7 +74,8 @@ export type AccessoriesType = {
 }
 
 let initialState = {
-  selectedItem: {} as SelectedProductType, 
+  selectedItem: {} as SelectedProductType,
+  recItems: [] as Array<RecItemType>,
   items: [] as Array<ProductType>,
   collections: [] as Array<CollectionType>,
   clothes: [] as Array<ClothesType>,
@@ -78,6 +88,9 @@ const shopReducer = (state = initialState, action: ActionsType): InitialStateTyp
   switch (action.type) {
     case SET_ITEMS:
       return { ...state, items: action.items }
+
+    case SET_REC_ITEMS:
+      return {...state, recItems: action.item}
 
     case SET_SELECTED_ITEM: 
       return {...state, selectedItem: action.item}
@@ -97,13 +110,16 @@ const shopReducer = (state = initialState, action: ActionsType): InitialStateTyp
 }
 
 type ActionsType = setItemsActionType | setCollectionsActionType |
-                    setClothesActionType |   setAccessoriesActionType | setSelectedItemType
+                    setClothesActionType |   setAccessoriesActionType | setSelectedItemType | setRecItemsType
 
 
 type setSelectedItemType = {type: typeof SET_SELECTED_ITEM, item: SelectedProductType}
 export const setSelectedItem = (item: SelectedProductType): setSelectedItemType => (
   { type: SET_SELECTED_ITEM, item }
 )
+
+type setRecItemsType = {type: typeof SET_REC_ITEMS, item: Array<RecItemType>}
+export const setRecItems = (item: Array<RecItemType>): setRecItemsType => ({ type: SET_REC_ITEMS, item })
 
 
 type setItemsActionType = {type: typeof SET_ITEMS, items: Array<ProductType>}
@@ -148,6 +164,16 @@ export const requestProduct = (id: number) => (
   let data: SelectedProductType = await getProduct(id)
 
   dispatch(setSelectedItem(data))
+  // dispatch(toggleIsFetching(false));
+  }
+)
+
+export const requestRecProducts = (id: number, collectionId: number | null, subtype_id: number) => (
+  async (dispatch: DispatchType) => {
+  // dispatch(toggleIsFetching(true));
+  let data: Array<RecItemType> = await getRecProducts(collectionId || -1, subtype_id)
+
+  dispatch(setRecItems(data))
   // dispatch(toggleIsFetching(false));
   }
 )

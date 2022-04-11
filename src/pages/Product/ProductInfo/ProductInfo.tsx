@@ -32,7 +32,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   title, type_id, type_title, subtype_id, subtype_title, price, description,
   sale_price, sizing, xxs, xs, s, m, l, xl, xxl}) => {
 
-  return <div className="">
+  return <div className={style.productInfoScene}>
     <h3 className={style.title}> {title} </h3>
 
     <Crumbs sale_price={sale_price} type_id={type_id} type_title={type_title} subtype_id={subtype_id}   

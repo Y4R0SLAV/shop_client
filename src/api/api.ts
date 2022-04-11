@@ -29,6 +29,10 @@ export const getProduct = (id: number) => {
 }
 
 
+export const getRecProducts = (collection_id: number, subtype_id:number) => {
+  return instance.get<any>(`product/${collection_id}/${subtype_id}`).then(response => response.data)
+}
+
 export const getCollections = () => {
   return instance.get<any>(`collection`).then(response => response.data)
 }

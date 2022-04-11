@@ -1,10 +1,10 @@
 import React, {useEffect} from "react"
 import { useParams } from "react-router"
 import { useDispatch, useSelector } from 'react-redux'
-import { SelectedProductType, requestProduct } from "../../redux/reducers/shopReducer"
+import { SelectedProductType, requestProduct, requestRecProducts } from "../../redux/reducers/shopReducer"
 import { selectProduct } from '../../redux/selectors/productSelector'
 
-import { Interested } from './Interested/Interested'
+import { Interested} from './Interested/Interested'
 import { PhotoScene } from './PhotoScene/PhotoScene'
 import { ProductInfo } from './ProductInfo/ProductInfo'
 
@@ -13,12 +13,17 @@ import s from './product.module.css'
 const Product = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
+  
+  const p: SelectedProductType = useSelector(selectProduct)
 
   useEffect(() => {
     if (id) { dispatch(requestProduct(+id)) }
-  }, []);
+    
+  }, [])
 
-  const p: SelectedProductType = useSelector(selectProduct)
+  useEffect(() => {
+    if (id && p) {dispatch(requestRecProducts(+id, p.collection_id, p.subtype_id))}
+  }, [p])
 
   return (
     <div> 
@@ -31,7 +36,7 @@ const Product = () => {
           xxs={p.xxs} xs={p.xs} s={p.s} m={p.m} l={p.l} xl={p.xl} xxl={p.xxl}
         />
       </div>
-      <Interested subtype_id={p.subtype_id} collection_id={p.collection_id}/>
+      <Interested />
     </div>
   )
 }
