@@ -9,6 +9,7 @@ import { PhotoScene } from './PhotoScene/PhotoScene'
 import { ProductInfo } from './ProductInfo/ProductInfo'
 
 import s from './product.module.css'
+import BottomNavigation from './../../components/BottomNavigation/BottomNavigation';
 
 const Product = () => {
   const { id } = useParams()
@@ -37,6 +38,7 @@ const Product = () => {
         />
       </div>
       <Interested />
+      <BottomNavigation />
     </div>
   )
 }
