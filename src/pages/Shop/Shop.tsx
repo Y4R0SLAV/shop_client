@@ -30,8 +30,6 @@ const Shop = () => {
       }
 
       <ShopItems shopItemsArray={shopItemsArray}/>
-      <BottomNavigation />
-
     </div>
   )
 }

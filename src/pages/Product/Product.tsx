@@ -19,8 +19,7 @@ const Product = () => {
 
   useEffect(() => {
     if (id) { dispatch(requestProduct(+id)) }
-    
-  }, [])
+  }, [id])
 
   useEffect(() => {
     if (id && p) {dispatch(requestRecProducts(+id, p.collection_id, p.subtype_id))}
@@ -38,7 +37,6 @@ const Product = () => {
         />
       </div>
       <Interested />
-      <BottomNavigation />
     </div>
   )
 }

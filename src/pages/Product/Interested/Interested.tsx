@@ -8,14 +8,22 @@ import { Link } from 'react-router-dom';
 import { PRODUCT_ROUTE } from '../../../routes'
 import { numToPrice } from './../ProductInfo/ProductComponents/Price'
 
-const GetItems: React.FC<{arr: Array<RecItemType>}> = ({arr}) => {
+type GetItemsProps = {
+  arr: Array<RecItemType>,
+  blockWidth: number,
+  imgWidth: number,
+  saleBlockRightMargin: number
+
+}
+
+export const GetItems: React.FC<GetItemsProps> = ({ arr, blockWidth, imgWidth, saleBlockRightMargin }) => {
   return <div className={style.items}> 
     {arr.map(item => {
-      return <Link to={PRODUCT_ROUTE + "/" + item.id}> <div id={item.id.toString()} className={style.item}>
+      return <Link to={PRODUCT_ROUTE + "/" + item.id}> <div id={item.id.toString()} className={style.item} style={{width: blockWidth + "px"}} >
 
                 <div className={style.img}>
-                  <img src={item.url} alt={item.title} />
-                  { item.sale_price ? <span className={style.sale}> SALE </span> : ""}
+                  <img src={item.url} alt={item.title} style={{width: imgWidth + "px", height: imgWidth + "px"}}/>
+                  { item.sale_price ? <span className={style.sale} style={{right: saleBlockRightMargin + "px"}}> SALE </span> : ""}
                 </div>
                 <div className={style.itemTitle}>{item.title}</div>
                 {
@@ -40,7 +48,7 @@ export const Interested = () => {
     <h3 className={style.title}> Возможно, вас заинтересует </h3>
     {
       recProducts.length < 1  ? <Preloader />    
-                              : <GetItems arr={recProducts}/>
+                              : <GetItems arr={recProducts} saleBlockRightMargin={0} blockWidth={185} imgWidth={185}/>
     }
   </div>
 }

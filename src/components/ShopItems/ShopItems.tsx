@@ -4,7 +4,6 @@ import s from "./shopItems.module.css"
 import { Link } from 'react-router-dom'
 
 const ShopItems: React.FC<{shopItemsArray: Array<ProductType>}> = ({ shopItemsArray }) => {
-  // shopItems - массив товаров, товар - объект со свойствами id, photos: {frontPhoto, backPhoto}, price, sale
   const [focusedItem, setFocusedItem] = useState(0)
 
   const getFinishedItem = (item: ProductType) => {

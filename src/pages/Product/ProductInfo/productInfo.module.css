@@ -5,7 +5,8 @@
   position: sticky;
   top: 0;
   scrollbar-width: thin;
-  scrollbar-color: #7f7f7f white; 
+  scrollbar-color: #7f7f7f #ffffff; 
+  z-index: 100;
 }
 
 .title {

@@ -19,6 +19,17 @@ export const selectProductToCart = (state: AppStateType) => {
   return {title, url, price, id}
 }
 
+export const selectProductToFav = (state: AppStateType) => {
+  const s = state.shop.selectedItem
+  const title = s.title
+  const url = s.front
+  const price = s.price
+  const sale_price = s.sale_price
+  const id = s.id
+
+  return {title, url, price, sale_price, id}
+}
+
 export const selectCurrentProductId = (state: AppStateType) => {
   return state.shop.selectedItem.id
 }

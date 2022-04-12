@@ -17,7 +17,7 @@
 }
 
 .item {
-  width: 190px;
+  width: 185px;
 }
 
 .itemTitle {
@@ -26,13 +26,14 @@
   margin-top: 2px;
 }
 
-.itemTitle:hover {
+.item:hover .itemTitle {
   color: #145485;
 }
 
+
 .img img {
-  width: 180px;
-  height: 180px;
+  width: 185px;
+  height: 185px;
 }
 
 .img {
@@ -41,8 +42,8 @@
 
 .sale {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 5%;
+  right: 0px;
   background: #fe9800;
   width: 50px;
   color: white;
@@ -67,4 +68,19 @@
   font-size: 18px;
   color: #333;
   font-weight: 600;
+}
+
+.img {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.img img {
+  transition-property: all;
+  transition: all ease 0.4s;
+}
+
+.img img:hover {
+  transform: scale(1.1);
+  
 }

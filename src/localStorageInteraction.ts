@@ -1,5 +1,6 @@
 import Item from 'antd/lib/list/Item'
 import { stringify } from 'querystring'
+import { currentItemToFavType } from './pages/Product/ProductInfo/AddToFavourite'
 import { currentItemType } from './pages/Product/ProductInfo/SizingAndCart/CartButton'
 
 export type cartItemType = {
@@ -72,16 +73,16 @@ export const deleteItemFromCart = () => {
 
 
 export const getItemsFromFavourite = () => {
-  return JSON.parse(localStorage.getItem('fav') as string) as Array<number>
+  return JSON.parse(localStorage.getItem('fav') as string) as Array<currentItemToFavType>
 }
 
-export const addItemToFavourite = (id: number) => {
+export const addItemToFavourite = (obj: currentItemToFavType) => {
   const items = getItemsFromFavourite() || []
   
-  localStorage.setItem('fav', JSON.stringify([...items, id]))
+  localStorage.setItem('fav', JSON.stringify([...items, obj]))
 }
 
 export const deleteItemFromFavourite = (id: number) => {
   const items = getItemsFromFavourite()
-  localStorage.setItem('fav', JSON.stringify(items.filter(item => item !== id)))
+  localStorage.setItem('fav', JSON.stringify(items.filter(item => item.id !== id)))
 }

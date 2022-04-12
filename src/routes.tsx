@@ -2,7 +2,7 @@ import Admin from "./pages/Admin"
 import Cart from "./pages/Cart"
 import Shop from './pages/Shop/Shop'
 import Product from "./pages/Product/Product"
-import Favourite from './pages/Favourite'
+import Favourite from './pages/Favourite/Favourite'
 import Search from "./pages/Search"
 import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
 

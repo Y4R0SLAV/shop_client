@@ -29,9 +29,10 @@
 }
 
 .selectedTypeWrapper {
-  position: fixed;
+  position: absolute;
   max-width: 624px;
   width: 100%;
+  z-index: 200;
 }
 
 .selectedType {
@@ -42,6 +43,8 @@
   background-color: #f9f9f9;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  
+  z-index: 200;
 }
 
 .typeItem {

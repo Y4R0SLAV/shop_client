@@ -17,7 +17,12 @@ const addToCartHandle = (selectedSize: sizeType,
                           setIsHidden: (x: boolean) => void,
                           currentItem: currentItemType,
                           setObj: any) => {
-  selectedSize === null ? setIsHidden(false) : addItemToCart({...currentItem, size: selectedSize})
+
+  // если нажали на добавить в корзину, но не выбрали при этом размер
+  // то показать что нужно бы выбрать или добавить в корзину
+  selectedSize === null  
+                        ? setIsHidden(false) 
+                        : addItemToCart({...currentItem, size: selectedSize})
   setObj(getSizingAndCountsById(currentItem.id))
   return undefined
 }
@@ -37,13 +42,15 @@ export type CartButtonProps = {
 }
 
 export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden, countOfCurrentSize}) => {
-  const currentItem = useSelector(selectProductToCart)
+  // в селекторе я уже учел цену со скидкой и не ношу её здесь
+  const currentItem = useSelector(selectProductToCart) 
+
   let [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id)) || {}
 
   useEffect(() => { setSizeObject(getSizingAndCountsById(currentItem.id)) }, [currentItem])
-
+  
+  // выбран размер и на складе есть ещё минимум один
   if (selectedSize && countOfCurrentSize >= (sizeObject[selectedSize] as number) ) {
-
     return <div className={style.cartButtonBlock}>
         <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
         
@@ -53,13 +60,19 @@ export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHi
 
         <Link to={CART_ROUTE}> <div className={style.cartButton + " " + style.toCartButton}> Корзина </div>  </Link>
       </div>
-  } else if (selectedSize && sizeObject[selectedSize] !== undefined) {
+  } 
+  
+  // размер выбран, но на складе больше нет
+  else if (selectedSize && sizeObject[selectedSize] !== undefined) {
       return  <div className={style.cartButtonBlock}>
                 <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
                 <Link to={CART_ROUTE}> <div className={style.cartButton + " " + style.toCartButton}> Корзина </div>  </Link>
               </div>
         
-  } else {
+  } 
+  
+  // размер пока что не выбран
+  else {
     return <div className={style.cartButtonBlock}>
     <div className={style.cartButton} onClick={() => addToCartHandle(selectedSize, setIsHidden, currentItem, setSizeObject)}>
       В корзину
@@ -74,9 +87,4 @@ export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHi
     }
   </div>
   }
-
-
-
-
-
 }
