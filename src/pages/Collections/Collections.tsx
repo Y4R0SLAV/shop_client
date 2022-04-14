@@ -1,11 +1,10 @@
-import React from "react"
+import { useSelector } from "react-redux"
+import { selectCollections } from './../../redux/selectors/collectionSelector'
+import { getBlocksFromArray } from './../../assets/getBlocksForColAccClo/getBlocksForColAccClo'
 
-const Collection = () => {
-  return (
-    <div>
-      Collection
-    </div>
-  )
+
+export const Collections = () => {
+  let collections = useSelector(selectCollections)
+
+  return getBlocksFromArray(collections)
 }
-
-export default Collection
