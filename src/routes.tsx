@@ -18,9 +18,9 @@ export const FAVOURITE_ROUTE = '/favourite'
 export const SEARCH_ROUTE = '/search'
 export const SALES_ROUTE = '/sales'
 
-export const CLOTHES_ROUTE = '/clothes'
-export const ACCESSORIES_ROUTE = '/accessories'
-export const COLLECTION_ROUTE = '/collections'
+export const CLOTHES_ROUTE = '/clothes/'
+export const ACCESSORIES_ROUTE = '/accessories/'
+export const COLLECTION_ROUTE = '/collections/'
 
 export const BUREAUCRACY_ROUTE = '/pages/'
 export const SHIPPING_PAYMENT = 'shipping-payment'
@@ -72,6 +72,18 @@ const routes = [
   {
     path: ACCESSORIES_ROUTE,
     Component: Accessories
+  },
+  {
+    path: COLLECTION_ROUTE + ":id",
+    Component: Shop
+  },
+  {
+    path: CLOTHES_ROUTE  + ":id",
+    Component: Shop
+  },
+  {
+    path: ACCESSORIES_ROUTE  + ":id",
+    Component: Shop
   },
 ]
 
