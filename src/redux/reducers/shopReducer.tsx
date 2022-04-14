@@ -152,7 +152,7 @@ export const requestProducts = (sybtypeId = 0,
   async (dispatch: DispatchType) => {
   // dispatch(toggleIsFetching(true));
   let data: Array<ProductType> = await getProducts(sybtypeId, collectionId, haveSale, term, sorted)
-  console.log(data)
+  
   dispatch(setItems(data))
   // dispatch(toggleIsFetching(false));
   }
