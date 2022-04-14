@@ -15,7 +15,7 @@ const ShopItems: React.FC<{shopItemsArray: Array<ProductType>}> = ({ shopItemsAr
       onMouseEnter={() => { setFocusedItem(item.id) }}
       onMouseLeave={() => { setFocusedItem(0) }}>
 
-      <Link to={"product/" + item.id}>
+      <Link to={"/product/" + item.id}>
         <div className={s.imageBlock}>
           {item.sale > 0 && <div className={s.saleLabel}> РАСПРОДАЖА </div>}
           <div className={s.clickabled}>
