@@ -1,25 +1,26 @@
 import React, { useEffect } from "react"
 import s from "./shop.module.css"
 import headerImg from "../../assets/shopPage/defaultShopHeader.png"
+import { useLocation } from 'react-router-dom'
 import saleImg from "../../assets/shopPage/saleImg.png"
-import BottomNavigation from '../../components/BottomNavigation/BottomNavigation'
 import ShopItems from '../../components/ShopItems/ShopItems'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { selectProducts } from "../../redux/selectors/productSelector"
 
 import { requestProducts } from '../../redux/reducers/shopReducer'
+import { SALES_ROUTE } from "../../routes"
 
 const Shop = () => {
-  // isSale буду брать из url (в роутс написано)
+  let location = useLocation()
   const shopItemsArray = useSelector(selectProducts)
-  const isSale = false
+  const isSale = location.pathname === SALES_ROUTE
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(requestProducts())
-  }, []);
+    dispatch(requestProducts(undefined, undefined, isSale))
+  }, [location.pathname]);
 
   return (
     <div className={s.wrapper}>
