@@ -40,11 +40,12 @@ const Bureaucracy = () => {
       }
 
 
-      <div className={s.printButton + " " + "noprint"}>
-        <a class="print-doc" href="javascript:(print());">
+
+      <a class="print-doc" href="javascript:(print());">
+        <div className={s.printButton + " " + "noprint"}>
           Распечатать
-        </a>
-      </div>
+        </div>
+      </a>
 
     </div >
   )
