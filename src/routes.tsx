@@ -6,6 +6,10 @@ import Favourite from './pages/Favourite/Favourite'
 import Search from "./pages/Search"
 import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
 
+import { Collections } from "./pages/Collections/Collections"
+import { Clothes } from "./pages/Clothes/Clothes"
+import { Accessories } from "./pages/Accessories/Accessories"
+
 export const ADMIN_ROUTE = '/admin'
 export const SHOP_ROUTE = '/'
 export const CART_ROUTE = '/cart'
@@ -16,6 +20,7 @@ export const SALES_ROUTE = '/sales'
 
 export const CLOTHES_ROUTE = '/clothes'
 export const ACCESSORIES_ROUTE = '/accessories'
+export const COLLECTION_ROUTE = '/collections'
 
 export const BUREAUCRACY_ROUTE = '/pages/'
 export const SHIPPING_PAYMENT = 'shipping-payment'
@@ -55,7 +60,19 @@ const routes = [
   {
     path: BUREAUCRACY_ROUTE + ':currentPage',
     Component: Bureaucracy
-  }
+  },
+  {
+    path: COLLECTION_ROUTE,
+    Component: Collections
+  },
+  {
+    path: CLOTHES_ROUTE,
+    Component: Clothes
+  },
+  {
+    path: ACCESSORIES_ROUTE,
+    Component: Accessories
+  },
 ]
 
 export default routes
