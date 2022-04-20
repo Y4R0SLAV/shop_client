@@ -86,3 +86,15 @@ export const deleteItemFromFavourite = (id: number) => {
   const items = getItemsFromFavourite()
   localStorage.setItem('fav', JSON.stringify(items.filter(item => item.id !== id)))
 }
+
+
+export const getFavArrLength = () => {
+  const arrayFromStrorage = JSON.parse(localStorage.getItem("fav") as string)
+  return arrayFromStrorage.length
+}
+
+export const getCartArrLength = () => {
+  const arrayFromStrorage = JSON.parse(localStorage.getItem("cart") as string)
+  return arrayFromStrorage.length
+}
+
