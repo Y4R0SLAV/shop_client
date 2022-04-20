@@ -30,11 +30,11 @@ const Navigation = () => {
   const showSomeType = (items : Array<CollectionType | AccessoriesType | ClothesType>) => {
     return items.map(type => {
       return (
-        <div className={s.typeItem} key={type.id}>
-          <Link to={type.url}>
+        <Link to={type.url} onClick={() => mouseOnBlock([false, false, false])}>
+          <div className={s.typeItem} key={type.id}>
             {type.title}
-          </Link>
-        </div>
+          </div>
+        </Link>
       )
     })
   }
