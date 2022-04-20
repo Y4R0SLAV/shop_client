@@ -205,39 +205,3 @@ a {
 }
 
 
-.favBlock {
-  margin: 30px 0;
-}
-
-.favButton {
-  border: 1px solid #ccc;
-  color: #333;
-  margin-top: 10px;
-  width: 165px;
-  height: 35px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.favButton:hover {
-  background: #f2f2f2;
-  border: 1px solid #bbb;
-}
-
-.favLink {
-  width: 70%;
-}
-
-.heart {
-  margin-top: 2px;
-  margin-right: 6px;
-  color: #666;
-}
-
-.filledHeart {
-  color: #fd8282;
-}
