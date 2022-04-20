@@ -3,10 +3,14 @@ import appReducer from './reducers/appReducer'
 import thunkMiddleware from 'redux-thunk'
 import shopReducer from "./reducers/shopReducer"
 import {composeWithDevTools} from "redux-devtools-extension"
+import favReducer from "./reducers/favReducer"
+import cartReducer from "./reducers/cartReducer"
 
 let rootReducer = combineReducers({
   app: appReducer,
-  shop: shopReducer
+  shop: shopReducer,
+  fav: favReducer,
+  cart: cartReducer
 })
 
 type RootReducerType = typeof rootReducer
