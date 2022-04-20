@@ -4,7 +4,7 @@ import style from "./style.module.css"
 
 export const getBlocksFromArray = (arr: Array<CollectionType> | Array<ClothesType> | Array<AccessoriesType>) => {
   const result = arr.map(item => {
-    return <Link to={'/' + item.url}>
+    return <Link to={item.url}>
       <div className={style.block}>
         <div className={style.img}>
           <img src={item.picture} alt={item.title} />
