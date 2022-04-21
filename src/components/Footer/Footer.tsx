@@ -11,9 +11,7 @@ const Footer = () => {
     <div className="noprint">
       <BottomNavigation />
       <div className={s.border}> </div>
-      <div className={s.wrapper}>
-        <FooterAboutDelivery />
-      </div>
+      <FooterAboutDelivery />
       <FooterInfo />
     </div>
   )
