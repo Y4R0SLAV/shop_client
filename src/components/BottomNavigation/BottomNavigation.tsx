@@ -23,8 +23,6 @@ const BottomNavigation = () => {
   return (
     <div className={s.navigation}>
       {getNavItem(SEARCH_ROUTE, SearchOutlined, "Поиск")}
-      {/* хз что делать потом сделаю*/}
-      {getNavItem("#", FileDoneOutlined, "Отследить заказ")}
       {getNavItem(FAVOURITE_ROUTE, HeartOutlined, `Избранное ${favCount > 0 ? "(" + favCount + ")" : ""}`)}
       {getNavItem(CART_ROUTE, ShoppingOutlined, `Корзина ${cartCount > 0 ? "(" + cartCount + ")" : ""}`)}
     </div>
