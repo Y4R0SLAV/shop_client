@@ -9,7 +9,7 @@ import { selectClothes } from '../../redux/selectors/clothesSelector'
 import { selectAccessories } from './../../redux/selectors/accessoriesSelector'
 
 import { CollectionType, ClothesType, AccessoriesType } from '../../redux/reducers/shopReducer'
-import { CLOTHES_ROUTE, COLLECTION_ROUTE, SALES_ROUTE } from '../../routes'
+import { ACCESSORIES_ROUTE, CLOTHES_ROUTE, COLLECTION_ROUTE, SALES_ROUTE } from '../../routes'
 
 const Navigation = () => {
   const collections = useSelector(selectCollections)
@@ -46,21 +46,18 @@ const Navigation = () => {
         <Link to={SALES_ROUTE}> <div className={s.buttons_item + " " + s.saleButton} onMouseEnter={() => mouseOnBlock([false, false, false])}>
           СКИДКИ
         </div> </Link>
-        {/* кнопка Коллекций*/}
+
         <Link to={COLLECTION_ROUTE}> <div className={getClassNames(0)} onMouseEnter={() => mouseOnBlock([true, false, false])}>
           Коллекции
         </div> </Link>
 
-        {/* кнопка Одежды*/}
         <Link to={CLOTHES_ROUTE}>
           <div className={getClassNames(1)} onMouseEnter={() => mouseOnBlock([false, true, false])}>
             Одежда
           </div>
         </Link>
 
-
-        {/* кнопка Аксессуаров*/}
-        <Link to="/accessories">
+        <Link to={ACCESSORIES_ROUTE}>
           <div className={getClassNames(2)} onMouseEnter={() => mouseOnBlock([false, false, true])}>
             Аксессуары
           </div>
