@@ -1,5 +1,5 @@
 import Admin from "./pages/Admin"
-import Cart from "./pages/Cart"
+import {Cart} from "./pages/Cart/Cart"
 import Shop from './pages/Shop/Shop'
 import Product from "./pages/Product/Product"
 import Favourite from './pages/Favourite/Favourite'
