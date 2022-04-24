@@ -1,0 +1,171 @@
+.wrapper {
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cartInfo {
+  padding-top: 20px;
+  border-top: 1px solid #e6e5e5;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.input {
+  width: 240px;
+  height: 40px;
+  padding: 10px;
+  border: solid 1px #cecece;
+  border-radius: 2px;
+  margin: 15px 10px 10px 0;
+
+}
+
+.button {
+  width: 125px;
+  height: 40px;
+  border: solid 1px #cecece;
+  background: #fff;
+  font-weight: 700;
+  border-radius: 2px;
+  margin: 15px 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.button:hover {
+
+  background: #efefef;
+
+}
+
+
+.errorMsg {
+  color: #e56464;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+
+.promoCode {
+  cursor: default;
+  margin: 15px 0 20px;
+}
+
+.promoCode div {
+  cursor: pointer;
+  color: #0d6efd;
+}
+
+.promoCode div:hover {
+  color: #0a58d0;
+}
+
+.itemBlock {
+  display: flex;
+  align-items: top;
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.itemImg {
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.itemImg img {
+  width: 80px;
+  height: 80px;
+  
+  transition-property: all;
+  transition: all ease 0.2s;
+}
+
+.itemImg img:hover {
+  transform: scale(1.1);
+}
+
+.itemImg.img {
+  margin: 0;
+}
+
+.fourItems {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.itemTitle {
+  color: #33333f;
+  transition: all ease 0.15s;
+}
+
+.itemTitle:hover {
+  color: #335485;
+}
+
+.itemSizing {
+  color: #9f9f9f;
+}
+
+.itemCount {
+  color: #1e7ec8;
+  cursor: pointer;
+  transition: all ease 0.15s;
+  display: flex;
+}
+
+.itemCount:hover {
+  color: #145485;
+}
+
+.itemDown {
+  margin: 7px 0 0 5px;
+}
+
+.itemClose {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  color: #bababa;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.itemClose:hover {
+  color: #1e7ec8;
+}
+
+.itemTotalPrice {
+  position: absolute;
+  right: 0;
+  bottom: 0
+}
+
+.moreThanThree {
+  cursor: pointer;
+}

@@ -1,14 +1,13 @@
 import style from "./cart.module.css"
 import { CartItemsBlock } from './CartItemsBlock'
-import { CartFormBlock } from './CartFormBlock'
-
+import { CartOrderBlock } from './CartOrderBlock'
 
 export const Cart = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
         <CartItemsBlock />
-        <CartFormBlock />
+        <CartOrderBlock />
       </div>
     </div>
   )
