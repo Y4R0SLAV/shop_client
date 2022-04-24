@@ -2,7 +2,14 @@ import React, {FC} from 'react';
 import style from "../productInfo.module.css"
 
 export const numToPrice = (price: number) => {
-  return `${price > 1000 ? Math.floor(price / 1000) + " " + price % 1000 : price } ₽`
+  if (price > 1000) {
+    const remain = price % 1000 
+    let strRemain = ''
+    if (remain < 100) { strRemain = "0"+ remain } else { strRemain = remain.toString() }
+
+    return Math.floor(price / 1000) + " " + strRemain + " ₽"
+  }
+  return price
 }
 
 export const Price: FC<{price: number, sale_price: number }> = ({price, sale_price}) => {
