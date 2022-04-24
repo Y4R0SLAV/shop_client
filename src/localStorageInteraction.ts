@@ -67,9 +67,12 @@ export const incrementItemCount = (productId: number, size: 'xxs' | 'xs' | 's' |
 }
 
 
-export const deleteItemFromCart = () => {
+export const deleteItemFromCart = (id: number, size: string) => {
+  const allItemsInCart: Array<cartItemType> = JSON.parse(localStorage.getItem('cart') as string) || [] 
+  const newItems = allItemsInCart.filter(item => !(item.id === id && item.size === size))
 
-}
+  localStorage.setItem('cart', JSON.stringify(newItems))
+} 
 
 
 export const getItemsFromFavourite = () => {
