@@ -5,7 +5,8 @@ import { selectProductToCart } from './../../../../redux/selectors/productSelect
 import { addItemToCart, getSizingAndCountsById, incrementItemCount } from './../../../../localStorageInteraction'
 import { CART_ROUTE } from '../../../../routes'
 import { Link } from 'react-router-dom'
-
+import { setCartArrFromLS } from './../../../../redux/reducers/cartReducer'
+import { useDispatch } from 'react-redux'
 
 export type sizeType = null | 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 
@@ -16,7 +17,7 @@ export type currentItemType = {
 const addToCartHandle = (selectedSize: sizeType,
                           setIsHidden: (x: boolean) => void,
                           currentItem: currentItemType,
-                          setObj: any) => {
+                          setObj: any, dispatch: any) => {
 
   // если нажали на добавить в корзину, но не выбрали при этом размер
   // то показать что нужно бы выбрать или добавить в корзину
@@ -24,15 +25,15 @@ const addToCartHandle = (selectedSize: sizeType,
                         ? setIsHidden(false) 
                         : addItemToCart({...currentItem, size: selectedSize})
   setObj(getSizingAndCountsById(currentItem.id))
+  dispatch(setCartArrFromLS())
   return undefined
 }
 
-const incrementItemCountHandle = (id: number, size: sizeType, setObj: any) => {
+const incrementItemCountHandle = (id: number, size: sizeType, setObj: any, dispatch: any) => {
   incrementItemCount(id, size)
   setObj(getSizingAndCountsById(id))
+  dispatch(setCartArrFromLS())
 }
-
-
 
 export type CartButtonProps = {
   selectedSize: sizeType,
@@ -44,6 +45,7 @@ export type CartButtonProps = {
 export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHidden, countOfCurrentSize}) => {
   // в селекторе я уже учел цену со скидкой и не ношу её здесь
   const currentItem = useSelector(selectProductToCart) 
+  const dispatch = useDispatch()
 
   let [sizeObject, setSizeObject] = useState(getSizingAndCountsById(currentItem.id)) || {}
 
@@ -54,7 +56,7 @@ export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHi
     return <div className={style.cartButtonBlock}>
         <p className={style.countInCart}> {sizeObject[selectedSize] + " в корзине "} </p>
         
-        <div className={style.cartButton} onClick={() => {incrementItemCountHandle(currentItem.id, selectedSize, setSizeObject)}}>
+        <div className={style.cartButton} onClick={() => {incrementItemCountHandle(currentItem.id, selectedSize, setSizeObject, dispatch)}}>
           Добавить ещё
         </div>
 
@@ -74,7 +76,7 @@ export const CartButton: FC<CartButtonProps> = ({selectedSize, isHidden, setIsHi
   // размер пока что не выбран
   else {
     return <div className={style.cartButtonBlock}>
-    <div className={style.cartButton} onClick={() => addToCartHandle(selectedSize, setIsHidden, currentItem, setSizeObject)}>
+    <div className={style.cartButton} onClick={() => addToCartHandle(selectedSize, setIsHidden, currentItem, setSizeObject, dispatch)}>
       В корзину
     </div>
 
