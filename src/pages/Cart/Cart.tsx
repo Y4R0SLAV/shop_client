@@ -1,6 +1,6 @@
 import style from "./cart.module.css"
 import { CartItemsBlock } from './CartItemsBlock'
-import { CartOrderBlock } from './CartOrderBlock'
+import { CartOrderBlock } from './CartOrderBlock/CartOrderBlock'
 
 export const Cart = () => {
   return (

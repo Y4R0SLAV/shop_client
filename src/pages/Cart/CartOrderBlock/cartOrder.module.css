@@ -1,0 +1,85 @@
+.cartOrderBlock {
+  max-width: 640px;
+  margin-left: 15px;
+  color: #333;
+}
+
+.button {
+  width: 350px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+
+  transition: all ease 0.15s;
+  background: #333;
+  border-radius: 4px;
+  border: none;
+}
+
+.button:hover {
+  background: #4e4e4e;
+}
+
+
+.textField {
+  margin: 20px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 20px 10px;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #abbbc8;
+  transition: all ease 0.15s;
+}
+
+
+.input:focus {
+  border-color: #1e7ec8;
+  outline: 0;
+}
+
+.input.inputError {
+  background: #fff0f0;
+  border-color: #e56363;
+  border-width: 1px;
+}
+
+.input.inputError::placeholder {
+  color: #f59b9b;
+}
+
+.input.inputError:hover {
+  background: #fff;
+}
+
+
+.label {
+  display: flex;
+  align-items: baseline;
+}
+
+.checkbox {
+  border-radius: 20px;
+  accent-color: #9d3039;
+  height: 20px; /* not needed */
+  width: 20px; /* not needed */
+}
+
+.error {
+  color:#e56464;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 5px;
+
+}
+
+.conditionsError {
+  background: #f2ffaa;
+}

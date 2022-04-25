@@ -38,9 +38,8 @@ export const CartItemsBlock = () => {
   const cartItems = useSelector(selectCartItems)
   const totalPrice = cartItems.map(item => item.price * item.count).reduce((acc, a) => acc + a, 0)  
 
-  return <div className=""> 
-      <CartItems cartItems={cartItems}/> 
-      <div className={style.border}/>
+  return <div className={style.cartItemsBlock}> 
+      <CartItems cartItems={cartItems}/>
       <CartInfo price={totalPrice}/> 
     </div>
 }

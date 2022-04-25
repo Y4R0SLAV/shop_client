@@ -19,7 +19,7 @@ const FormForGiftCodes: React.FC<FormPropsType> = ({ initialValue, successfulArr
   validateOnBlur={false}
 
   validate={values => {
-    const errors = { field: ""}
+    const errors = {} as { field?: string}
 
     if (!values.field) {
       errors.field = 'Поле обязательно для заполнения'
@@ -55,11 +55,13 @@ const FormForGiftCodes: React.FC<FormPropsType> = ({ initialValue, successfulArr
 
 export const CartFormBlock = () => {
   return <div className={style.forms} onAuxClick={() => alert(123)}> 
+
     <FormForGiftCodes  initialValue="" successfulArr={['123']}
               errorMsg={'Неверный код.'} placeholder={'Введите промокод'} autofocus/>
               
-    <FormForGiftCodes  initialValue="" successfulArr={['321']} 
+    <FormForGiftCodes  initialValue="" successfulArr={['123']} 
                         errorMsg={'Сертификата с таким кодом нет. Убедитесь, что ввели код верно.'} 
                         placeholder={"Введите код сертификата"} />
+
   </div>
 }
