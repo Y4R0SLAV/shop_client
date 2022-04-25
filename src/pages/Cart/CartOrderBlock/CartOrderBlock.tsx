@@ -7,6 +7,8 @@ import style from './cartOrder.module.css'
 
 export const CartOrderBlock = () => {
   const [currentStage, setCurrentStage] = useState(0)
+
+  // должна быть юзер дата, минимум - эмаил, телефон, имя, адрес и доставка/самовывоз
   
   // 0 - ввод емаила и соглашение с правилами
   // 1 - доставка / самовывоз + форма для заполнения

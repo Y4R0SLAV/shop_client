@@ -69,7 +69,8 @@ export const UserEmail: React.FC<UserEmailProps> = ({setCurrentStage, currentSta
 
       <label className={style.label}>
         <Field type="checkbox" name="conditions" />
-        <div className={errorInConditions ? style.conditionsError : ''}>Я принимаю условия:
+        <span> </span>
+        <div className={errorInConditions ? style.conditionsError : style.conditionsSuccess }>Я принимаю условия:
           <span><Link to={BUREAUCRACY_ROUTE + "" + SHIPPING_PAYMENT}> Условия доставки и оплаты / Shipping and Payment </Link>,</span> 
           <span><Link to={BUREAUCRACY_ROUTE + "" + PRIVACY_POLICY}> Согласие на обработку персональных данных / Consent to the Processing of Personal Data </Link> </span>
         </div>
@@ -77,26 +78,25 @@ export const UserEmail: React.FC<UserEmailProps> = ({setCurrentStage, currentSta
 
       <label className={style.label}>
         <Field type="checkbox" name="mailing" className={style.checkbox} />
+        <span> </span>
         <div className="">Подписаться на новости и эксклюзивные предложения</div>
       </label>
 
-      <div className="">
+      <div className={style.buttonBlock }>
+
         <button type="submit" disabled={isSubmitting} className={style.button} >
           Оформить заказ
         </button>
 
-        <div className="">
-          <LockOutlined />
-          <span>Все данные защищены сертификатом TLS и передаются в зашифрованном виде.</span>
+        <div className={style.lockBlock}>
+          <LockOutlined className={style.lock} />
+          <span className={style.span}>Все данные защищены сертификатом TLS и передаются в зашифрованном виде.</span>
         </div>
       </div>
-
-
     </Form>
-
     )}
-
     </Formik>
 
+    <div className={style.continue}>Далее</div>
   </div>
 } 
