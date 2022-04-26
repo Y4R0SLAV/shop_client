@@ -32,7 +32,7 @@ export const Sizing: FC<SizingProps & SizingPropsPlus> = (
   return <div>
 
   <div className={style.sizeSpan}>
-    { !isHidden && <span className={style.pulse}> </span> }
+    { !isHidden && <span className={style.pulse} > </span> }
     <div> Размер </div>
   </div>
     

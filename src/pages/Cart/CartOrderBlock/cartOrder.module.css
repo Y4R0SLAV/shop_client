@@ -55,12 +55,18 @@
 }
 
 .input {
+  background: #fff;
   width: 100%;
   padding: 20px 10px;
   height: 50px;
   border-radius: 4px;
   border: 1px solid #abbbc8;
   transition: all ease 0.15s;
+}
+
+.smallInput {
+  height: 40px;
+  padding: 5px 10px;
 }
 
 
@@ -88,22 +94,6 @@
   display: flex;
   align-items: baseline;
 }
-
-.checkbox {
-  border-radius: 20px;
-  accent-color: #9d3039;
-  height: 20px; /* not needed */
-  width: 20px; /* not needed */
-}
-
-.checkbox:hover {
-  background: red;
-  border-radius: 20px;
-  accent-color: #9d3039;
-  height: 20px; /* not needed */
-  width: 20px; /* not needed */
-}
-
 
 .error {
   color:#e56464;
@@ -259,3 +249,95 @@
 .delBlock>div:hover .delIcon, .delBlock>div.active .delIcon {
   color: #1e7ec8;
 }
+
+
+.pulse {
+  display: block;
+  margin: 3px 5px 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e56464;
+  box-shadow: 0 0 0 #e56464;
+  animation: pulse 1s ease-out forwards 0s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #e56464;
+  }
+  70% {
+      box-shadow: 0 0 0 5px rgba(204,169,44, 0);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+}
+
+.hiddenText {
+  color: #fe1e00;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+
+.doubleField {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.doubleField>div:first-child {
+  width: 65%;
+}
+
+.doubleField>div:last-child {
+  width: 34%;
+}
+
+.formFieldName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.formFieldName {
+  color: #333;
+  font-weight: 600;
+}
+
+.header {
+  margin: 10px 0;
+  color: #333;
+}
+
+
+/*---------------------------------------------------------*/
+.success {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.succIcon {
+  font-size: 30px;
+  color: #53a3e0;
+  margin-right: 10px;
+}
+
+.succTitle {
+  font-weight: 600;
+  transition: all ease-in-out 0.1s;
+}
+
+.succInfo {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.success:hover .succTitle, .succChange {
+  color: #53a3e0; 
+}
+/*---------------------------------------------------------*/
