@@ -3,7 +3,7 @@ import {Cart} from "./pages/Cart/Cart"
 import Shop from './pages/Shop/Shop'
 import Product from "./pages/Product/Product"
 import Favourite from './pages/Favourite/Favourite'
-import Search from "./pages/Search"
+import Search from "./pages/Search/Search"
 import Bureaucracy from './components/Bureaucracy/BureaucracyPage'
 
 import { Collections } from "./pages/Collections/Collections"
