@@ -39,13 +39,15 @@ const FormForGiftCodes: React.FC<FormPropsType> = ({ initialValue, successfulArr
 >
   {({ isSubmitting }) => (
 
-  <Form className={style.form}>
-    <Field  type="text" name="field" className={style.input}
-            placeholder={placeholder} autoFocus={autofocus}
-            />
-    <button type="submit" disabled={isSubmitting} className={style.button}>
-      Применить
-    </button>
+  <Form>
+    <div className={style.form}>
+      <Field  type="text" name="field" className={style.input}
+              placeholder={placeholder} autoFocus={autofocus}
+              />
+      <button type="submit" disabled={isSubmitting} className={style.button}>
+        Применить
+      </button>
+    </div>
     <ErrorMessage name="field" component="div" className={style.errorMsg} />
   </Form>
   )}

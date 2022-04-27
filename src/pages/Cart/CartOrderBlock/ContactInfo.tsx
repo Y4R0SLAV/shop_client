@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import style from './cartOrder.module.css'
 import {CarOutlined, ShopOutlined} from "@ant-design/icons"
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import cn from 'classnames'
-import {CheckCircleOutlined} from "@ant-design/icons"
-import { SuccessBlock } from './SuccessBlock';
-import { CartInfoBlock } from './CartInfoBlock';
+import style from './cartOrder.module.css'
+import { SuccessBlock } from './SuccessBlock'
+import { CartInfoBlock } from './CartInfoBlock'
 
 type ContactInfoProps = {
   setCurrentStage: (a: number) => void
@@ -26,12 +25,34 @@ type ContactInfoProps = {
   setIndex: (x: string) => void
 }
 
+type DeliveryProps = {
+  tel: string
+  setTel: (x: string) => void
 
-const DeliveryForm = () => {
+  fullname: string
+  setFullname: (x: string) => void
+
+  country: string
+  setCountry: (x: string) => void
+
+  address: string
+  setAddress: (x: string) => void
+
+  city: string
+  setCity: (x: string) => void
+
+  index: string
+  setIndex: (x: string) => void
+
+  setStage: (x: number) => void
+  n: number
+}
+
+const DeliveryForm: React.FC<DeliveryProps> = ({tel, setTel, fullname, setFullname, country, setCountry, address, setAddress, city, setCity, index, setIndex, setStage, n}) => {
   return <div>
     <div className={style.header}>Все поля обязательны к заполнению, если не указано обратное.</div>
     <Formik
-      initialValues={{ country: '', fullname: '', tel: '', address: '', city: '', index: '' }}
+      initialValues={{ country, fullname, tel, address, city, index}}
 
       validate={values => {
         const errors = {} as { country?: string, fullname?: string, tel?: string, address?: string, city?: string, index?: string }
@@ -47,12 +68,20 @@ const DeliveryForm = () => {
 
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          setTel(values.tel)
+          setFullname(values.fullname)
+          setAddress(values.address)
+          setCountry(values.country)
+          setCity(values.city)
+          setIndex(values.index)
+  
+          setStage(n + 1)
+  
           setSubmitting(false);
         }, 400);
       }}
-      
     >
+
       {({ isSubmitting, errors, touched, handleChange }) => (
         <Form>
           <div className={style.formField}>
@@ -171,12 +200,12 @@ const DeliveryForm = () => {
           <div className={style.doubleField}>
             <div className={style.formField}>
               <Field  type="text" name="city" placeholder="Город"
-                            className={cn(style.input, style.smallInput, {[style.inputError]: errors.tel && touched.tel})} />
+                            className={cn(style.input, style.smallInput, {[style.inputError]: errors.city && touched.city})} />
               <ErrorMessage name="city" component="div" className={style.error}/>
             </div>
 
             <div className={style.formField}>
-              <Field type="text" name="index" className={cn(style.input, style.smallInput, {[style.inputError]: errors.index && touched.index})} placeholder="Индекс (необязательно)"/>
+              <Field type="text" name="index" className={cn(style.input, style.smallInput, {[style.inputError]: errors.index && touched.index})} placeholder="Индекс"/>
               <ErrorMessage name="index" component="div" className={style.error}/>
             </div>
           </div>
@@ -191,11 +220,20 @@ const DeliveryForm = () => {
 
 }
 
-const PickupForm = () => {
+type PickupProps = {
+  tel: string
+  setTel: (x: string) => void
+  fullname: string
+  setFullname: (x: string) => void
+  setStage: (x: number) => void
+  n: number
+}
+
+const PickupForm: React.FC<PickupProps> = ({tel, setTel, fullname, setFullname, setStage, n}) => {
   return <div>
   <div className={style.header}>Введите свою контактную информацию:</div>
   <Formik
-    initialValues={{ fullname: '', tel: ''}}
+    initialValues={{ fullname, tel}}
 
     validate={values => {
       const errors = {} as { fullname?: string, tel?: string}
@@ -205,7 +243,12 @@ const PickupForm = () => {
     }}
     onSubmit={(values, { setSubmitting }) => {
       setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
+        
+        setTel(values.tel)
+        setFullname(values.fullname)
+
+        setStage(n + 1)
+
         setSubmitting(false);
       }, 400);
     }}
@@ -246,7 +289,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({ setCurrentStage, curre
                                                           fullname, setFullname, tel, setTel,
                                                           country, setCountry, address, setAddress,
                                                           city, setCity, index, setIndex }) => {
-  const [delMethod, setDelMethod] = useState(0)
+  const [delMethod, setDelMethod] = useState(1)
 
   // 0 - delivery ; 1 - pickup
   const delCN = cn(style.delivery, {[style.active]: delMethod === 0})
@@ -274,8 +317,8 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({ setCurrentStage, curre
       <h4>Доставка</h4>
         <div>Выберите, как хотите получить заказ: </div>
         <div className={style.delBlock}>
-
-          <div className={delCN} onClick={() => setDelMethod(0)}>
+        {/* onClick={() => setDelMethod(0)} */}
+          <div className={delCN + " " + style.disabled} >
             <div className={style.delIconText}>
               <CarOutlined className={style.delIcon}/>
               Доставка по адресу
@@ -291,17 +334,24 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({ setCurrentStage, curre
 
         </div>
 
-      { delMethod === 0 && <DeliveryForm /> }
-      { delMethod === 1 && <PickupForm /> }
-      
+      { delMethod === 0 && <DeliveryForm  setStage={setCurrentStage} n={n} tel={tel} 
+                                          setTel={setTel} fullname={fullname} setFullname={setFullname}
+                                          country={country} setCountry={setCountry}
+                                          address={address} setAddress={setAddress}
+                                          index={index} setIndex={setIndex}
+                                          city={city} setCity={setCity}/> }
 
+      { delMethod === 1 && <PickupForm  tel={tel} setTel={setTel} fullname={fullname} 
+                                        setFullname={setFullname} setStage={setCurrentStage} n={n} /> }
+      
       <div className={style.continue}>Далее</div>
     </div>
   } else if (currentStage > n ){
     if (delMethod === 0) {
-      return <SuccessBlock title="Адрес доставки" params={[fullname, address + ", " + city + ", " + index + ", " + country]}/>
+      return <SuccessBlock  title="Адрес доставки" params={[fullname, address + ", " + city + ", " + index + ", " + country]}
+                            setStage={setCurrentStage} stage={n} change="Изменить"/>
     } else if (delMethod === 1) {
-      return <SuccessBlock title="Контактная информация" params={[fullname, tel]}/>
+      return <SuccessBlock title="Контактная информация" params={[fullname, tel]} setStage={setCurrentStage} stage={n} change="Изменить"/>
     } 
     return <div className=""> АШИБКА </div> 
   } else {

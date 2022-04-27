@@ -1,5 +1,6 @@
 .cartOrderBlock {
-  max-width: 640px;
+  max-width: 620px;
+  width: 100%;
   margin-left: 15px;
   color: #333;
 }
@@ -113,6 +114,7 @@
   transition: 0.1s all ease-in-out;
 }
 
+
 .label>input {
   position: absolute;
   z-index: -1;
@@ -200,12 +202,19 @@
 
 .contactInfo h4 {
   margin-top: 50px;
+  font-weight: 600;
 }
 
 .delBlock {
   display: flex;
   justify-content: space-between;
 }
+
+.delBlock>div.disabled{
+  cursor:not-allowed;
+  user-select: none;
+}
+
 
 .delBlock>div {
   margin: 15px 0;
@@ -237,8 +246,9 @@
   transition: ease-in-out 0.15s;
 }
 
-.delBlock>div:hover, .delBlock>div.active {
+.delBlock>div:hover:not(.disabled), .delBlock>div.active {
   border: 1px solid #1e7ec8;
+  
 }
 
 .delBlock>div.active {
@@ -246,7 +256,7 @@
   border-width: 2px;
 }
 
-.delBlock>div:hover .delIcon, .delBlock>div.active .delIcon {
+.delBlock>div:hover:not(.disabled) .delIcon, .delBlock>div.active .delIcon {
   color: #1e7ec8;
 }
 
@@ -319,6 +329,9 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e5e5;
 }
 
 .succIcon {
@@ -341,3 +354,29 @@
   color: #53a3e0; 
 }
 /*---------------------------------------------------------*/
+.radioForm {
+  margin: 25px 0;
+  font-weight: 600;
+}
+.radioLabel {
+  width: 100%;
+  border: 1px solid #e6e5e5;
+}
+
+.radioInput:checked+.radioLabel {
+  border: 2px solid #e245e5;
+}
+
+.radioInputBlock {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+}
+

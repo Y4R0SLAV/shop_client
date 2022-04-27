@@ -18,9 +18,6 @@ type UserEmailProps = {
 }
 
 export const UserEmail: React.FC<UserEmailProps> = ({setCurrentStage, currentStage, n, email, setEmail, mailing, setMailing}) => {
-  const [errorInInput, setErrorInInput] = useState(false)
-  const [errorInConditions, setErrorInConditions] = useState(false)
-
   if (currentStage === n) {
     return <div className=""> 
       <div className={style.header}>
@@ -33,23 +30,16 @@ export const UserEmail: React.FC<UserEmailProps> = ({setCurrentStage, currentSta
           const errors = {} as {email?: string, conditions?: string}
           if (!values.email) {
             errors.email = 'Пожалуйста, введите адрес электронной почты'
-            setErrorInInput(true)
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
             errors.email = 'С введённым адресом что-то не так. Пожалуйста, убедитесь, что ввели электронный адрес правильно.'
-            setErrorInInput(true)
-          } else {
-            setErrorInInput(false)
           }
           
           if (!values.conditions) {
             errors.conditions = 'Required'
-            setErrorInConditions(true)
-          } else {
-            setErrorInConditions(false)
           }
-          return errors;
+          return errors
         }}
 
         onSubmit={(values, { setSubmitting }) => {
@@ -105,6 +95,6 @@ export const UserEmail: React.FC<UserEmailProps> = ({setCurrentStage, currentSta
       <div className={style.continue}>Далее</div>
     </div>
   } else {
-    return <SuccessBlock title="Адрес эл. почты" params={[email]} />
+    return <SuccessBlock title="Адрес эл. почты" params={[email]} setStage={setCurrentStage} stage={n} change="Изменить адрес почты"/>
   }
 } 

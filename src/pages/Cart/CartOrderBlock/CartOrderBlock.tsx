@@ -6,7 +6,7 @@ import { PayBlock } from './PayBlock'
 import style from './cartOrder.module.css'
 
 export const CartOrderBlock = () => {
-  const [currentStage, setCurrentStage] = useState(0)
+  const [currentStage, setCurrentStage] = useState(2)
 
   const [userEmail, setUserEmail] = useState('')
   const [mailing, setMailing] = useState(false)
@@ -29,10 +29,12 @@ export const CartOrderBlock = () => {
     {/* <div onClick={() => alert(userEmail)}> ПОКАЗАТЬ ИМАИЛ</div> */}
     <UserEmail  n={0} currentStage={currentStage}
                 setCurrentStage={setCurrentStage}
+
                 email={userEmail} setEmail={setUserEmail}
                 mailing={mailing} setMailing={setMailing}/>
 
     <ContactInfo  n={1} currentStage={currentStage} setCurrentStage={setCurrentStage}
+
                   fullname={userFullName} setFullname={setUserFullName}
                   tel = {userTel} setTel={setUserTel}
                   country = {userCountry} setCountry={setUserCountry}
