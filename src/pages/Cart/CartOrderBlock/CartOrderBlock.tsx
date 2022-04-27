@@ -6,7 +6,7 @@ import { PayBlock } from './PayBlock'
 import style from './cartOrder.module.css'
 
 export const CartOrderBlock = () => {
-  const [currentStage, setCurrentStage] = useState(2)
+  const [currentStage, setCurrentStage] = useState(0)
 
   const [userEmail, setUserEmail] = useState('')
   const [mailing, setMailing] = useState(false)

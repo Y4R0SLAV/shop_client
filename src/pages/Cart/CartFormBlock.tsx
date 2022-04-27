@@ -56,7 +56,7 @@ const FormForGiftCodes: React.FC<FormPropsType> = ({ initialValue, successfulArr
 }
 
 export const CartFormBlock = () => {
-  return <div className={style.forms} onAuxClick={() => alert(123)}> 
+  return <div className={style.forms} > 
 
     <FormForGiftCodes  initialValue="" successfulArr={['123']}
               errorMsg={'Неверный код.'} placeholder={'Введите промокод'} autofocus/>
