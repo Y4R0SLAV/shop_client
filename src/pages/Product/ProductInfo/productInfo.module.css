@@ -155,7 +155,6 @@ a {
   transform: scale(1);
 }
 
-
 .countInCart {
   color: rgb(36, 36, 36);
   font-weight: 600;
@@ -165,42 +164,4 @@ a {
 .mainInfoBlock {
   margin: 20px 0;
 }
-
-.infoBlockTitle, .infoBlock h6  {
-  font-weight: 600;
-  pointer-events: none;
-}
-
-.infoBlock {
-  cursor: pointer;
-  margin: 10px 0;
-}
-
-
-
-.infoBlockTitle {
-  display: flex;
-  align-items: center;
-}
-
-.infoBlock h6.active {
-  color: #333;
-}
-
-.icon {
-  font-size: 14px;
-  margin-left: 3px;
-  margin-bottom: 3px;
-}
-
-.hiddenInfo {
-  position: absolute;
-  transform: scale(0);
-}
-
-.hiddenInfo.active {
-  transform: scale(1);
-  position: relative;
-}
-
 
